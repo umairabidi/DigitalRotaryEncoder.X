@@ -77,22 +77,12 @@ int main(int argc, char** argv) {
     display(3, 0);
     display(2, 0);
     display(1, 0);
+    
     while(1){
         if (int_F){
-            if (INA && INB){
-                dir = 1;
-            }
-            else if (INA && !INB){
-                dir = 0;
-            }
-            else if (!INA && INB){
-                dir = 0;
-            }
-            else if (!INA && !INB){
-                dir = 1;
-            }
-            counter += (dir*2-1);
-            display(2, counter);
+            dir = (INA + INB)%2;        // XOR doesn't seem to work...
+            counter += dir*2 - 1;
+            display(8, counter);
             int_F = 0;
         }
     }

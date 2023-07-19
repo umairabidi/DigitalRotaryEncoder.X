@@ -1706,22 +1706,12 @@ display(4, 0);
 display(3, 0);
 display(2, 0);
 display(1, 0);
+
 while(1){
 if (int_F){
-if (PORTAbits.RA0 && PORTAbits.RA1){
-dir = 1;
-}
-else if (PORTAbits.RA0 && !PORTAbits.RA1){
-dir = 0;
-}
-else if (!PORTAbits.RA0 && PORTAbits.RA1){
-dir = 0;
-}
-else if (!PORTAbits.RA0 && !PORTAbits.RA1){
-dir = 1;
-}
-counter += (dir*2-1);
-display(2, counter);
+dir = (PORTAbits.RA0 + PORTAbits.RA1)%2;
+counter += dir*2 - 1;
+display(8, counter);
 int_F = 0;
 }
 }

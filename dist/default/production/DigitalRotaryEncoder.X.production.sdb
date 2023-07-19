@@ -11,11 +11,11 @@
 [v _ISR_function ISR_function `II(v  1 e 1 0 ]
 "55
 [v _main main `(i  1 e 2 0 ]
-"103
+"93
 [v _SPI_send SPI_send `(v  1 e 1 0 ]
-"122
+"112
 [v _MAX7219_Setup MAX7219_Setup `(v  1 e 1 0 ]
-"130
+"120
 [v _display display `(v  1 e 1 0 ]
 [s S131 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
@@ -92,32 +92,32 @@
 [v main@counter counter `ui  1 a 2 8 ]
 "70
 [v main@dir dir `uc  1 a 1 10 ]
-"101
+"91
 } 0
-"130
+"120
 [v _display display `(v  1 e 1 0 ]
 {
 [v display@digit_X digit_X `i  1 p 2 7 ]
 [v display@val val `i  1 p 2 9 ]
-"132
-} 0
 "122
+} 0
+"112
 [v _MAX7219_Setup MAX7219_Setup `(v  1 e 1 0 ]
 {
-"128
+"118
 } 0
-"103
+"93
 [v _SPI_send SPI_send `(v  1 e 1 0 ]
 {
 [v SPI_send@addr addr `uc  1 a 1 wreg ]
-"104
+"94
 [v SPI_send@i i `i  1 a 2 5 ]
-"103
+"93
 [v SPI_send@addr addr `uc  1 a 1 wreg ]
 [v SPI_send@data data `uc  1 p 1 2 ]
-"105
+"95
 [v SPI_send@addr addr `uc  1 a 1 4 ]
-"120
+"110
 } 0
 "46
 [v _ISR_function ISR_function `II(v  1 e 1 0 ]
