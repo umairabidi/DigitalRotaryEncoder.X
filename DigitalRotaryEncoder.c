@@ -41,7 +41,8 @@ uint8_t int_F = 0;
 
 void SPI_send(uint8_t addr, uint8_t data);
 void MAX7219_Setup();
-void display(int digit_X, int val);
+void display_digit(int digit_X, int val);
+void display_num(int val);
 
 void __interrupt() ISR_function(void){
     #asm nop
@@ -69,20 +70,13 @@ int main(int argc, char** argv) {
     uint16_t counter = 5;
     uint8_t dir;            // Direction
     int_F = 0;              // Interrupt Flag
-    display(8, 0);
-    display(7, 0);
-    display(6, 0);
-    display(5, 0);
-    display(4, 0);
-    display(3, 0);
-    display(2, 0);
-    display(1, 0);
+    display_num(12345678);
     
     while(1){
         if (int_F){
             dir = (INA + INB)%2;        // XOR doesn't seem to work...
             counter += dir*2 - 1;
-            display(8, counter);
+            display_num(counter);
             int_F = 0;
         }
     }
@@ -117,6 +111,14 @@ void MAX7219_Setup(){
     SPI_send(0x0C,0x01);        // Shutdown (turn it on)
 }
 
-void display(int digit_X, int val){
+void display_digit(int digit_X, int val){
     SPI_send(digit_X, val);
+}
+
+void display_num(int val){
+    int i;
+    for (i=1; i<=8; i++){
+        display_digit(i, val%10);
+        val /= 10;
+    }
 }

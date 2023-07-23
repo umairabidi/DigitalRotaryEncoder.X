@@ -3,21 +3,27 @@
 [d edition pro ]
 [d chip 16F616 ]
 [d frameptr 0 ]
+"5 C:\Program Files\Microchip\xc8\v2.41\pic\sources\c90\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"5 C:\Program Files\Microchip\xc8\v2.41\pic\sources\c90\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
 "62 C:\Program Files\Microchip\xc8\v2.41\pic\sources\c90\common\float.c
 [v ___ftpack __ftpack `(f  1 e 3 0 ]
 "86 C:\Program Files\Microchip\xc8\v2.41\pic\sources\c90\common\ftadd.c
 [v ___ftadd __ftadd `(f  1 e 3 0 ]
-"46 D:\Backup\Files\Personal Projects\Coding\PIC_uC\MPLAB_X_3.00\DigitalRotaryEncoder.X\DigitalRotaryEncoder.c
+"47 D:\Backup\Files\Personal Projects\Coding\PIC_uC\MPLAB_X_3.00\DigitalRotaryEncoder.X\DigitalRotaryEncoder.c
 [v _ISR_function ISR_function `II(v  1 e 1 0 ]
-"55
+"56
 [v _main main `(i  1 e 2 0 ]
-"93
+"87
 [v _SPI_send SPI_send `(v  1 e 1 0 ]
-"112
+"106
 [v _MAX7219_Setup MAX7219_Setup `(v  1 e 1 0 ]
-"120
-[v _display display `(v  1 e 1 0 ]
-[s S131 . 1 `uc 1 RA0 1 0 :1:0 
+"114
+[v _display_digit display_digit `(v  1 e 1 0 ]
+"118
+[v _display_num display_num `(v  1 e 1 0 ]
+[s S130 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
 `uc 1 RA2 1 0 :1:2 
 `uc 1 RA3 1 0 :1:3 
@@ -25,8 +31,8 @@
 `uc 1 RA5 1 0 :1:5 
 ]
 "181 C:\Program Files\Microchip\xc8\v2.41\pic\include\proc\pic16f616.h
-[u S138 . 1 `S131 1 . 1 0 ]
-[v _PORTAbits PORTAbits `VES138  1 e 1 @5 ]
+[u S137 . 1 `S130 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES137  1 e 1 @5 ]
 [s S104 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
@@ -85,42 +91,75 @@
 [v _IOCAbits IOCAbits `VES86  1 e 1 @150 ]
 "40 D:\Backup\Files\Personal Projects\Coding\PIC_uC\MPLAB_X_3.00\DigitalRotaryEncoder.X\DigitalRotaryEncoder.c
 [v _int_F int_F `uc  1 e 1 0 ]
-"55
+"56
 [v _main main `(i  1 e 2 0 ]
 {
-"69
-[v main@counter counter `ui  1 a 2 8 ]
 "70
-[v main@dir dir `uc  1 a 1 10 ]
-"91
+[v main@counter counter `ui  1 a 2 12 ]
+"71
+[v main@dir dir `uc  1 a 1 14 ]
+"85
 } 0
-"120
-[v _display display `(v  1 e 1 0 ]
+"118
+[v _display_num display_num `(v  1 e 1 0 ]
 {
-[v display@digit_X digit_X `i  1 p 2 7 ]
-[v display@val val `i  1 p 2 9 ]
-"122
+"119
+[v display_num@i i `i  1 a 2 2 ]
+"118
+[v display_num@val val `i  1 p 2 0 ]
+"124
 } 0
-"112
+"114
+[v _display_digit display_digit `(v  1 e 1 0 ]
+{
+[v display_digit@digit_X digit_X `i  1 p 2 8 ]
+[v display_digit@val val `i  1 p 2 10 ]
+"116
+} 0
+"5 C:\Program Files\Microchip\xc8\v2.41\pic\sources\c90\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+{
+"10
+[v ___awmod@sign sign `uc  1 a 1 7 ]
+[v ___awmod@counter counter `uc  1 a 1 6 ]
+"5
+[v ___awmod@divisor divisor `i  1 p 2 2 ]
+[v ___awmod@dividend dividend `i  1 p 2 4 ]
+"34
+} 0
+"5 C:\Program Files\Microchip\xc8\v2.41\pic\sources\c90\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"10
+[v ___awdiv@quotient quotient `i  1 a 2 8 ]
+"11
+[v ___awdiv@sign sign `uc  1 a 1 7 ]
+[v ___awdiv@counter counter `uc  1 a 1 6 ]
+"5
+[v ___awdiv@divisor divisor `i  1 p 2 2 ]
+[v ___awdiv@dividend dividend `i  1 p 2 4 ]
+"41
+} 0
+"106 D:\Backup\Files\Personal Projects\Coding\PIC_uC\MPLAB_X_3.00\DigitalRotaryEncoder.X\DigitalRotaryEncoder.c
 [v _MAX7219_Setup MAX7219_Setup `(v  1 e 1 0 ]
 {
-"118
+"112
 } 0
-"93
+"87
 [v _SPI_send SPI_send `(v  1 e 1 0 ]
 {
 [v SPI_send@addr addr `uc  1 a 1 wreg ]
-"94
+"88
 [v SPI_send@i i `i  1 a 2 5 ]
-"93
+"87
 [v SPI_send@addr addr `uc  1 a 1 wreg ]
 [v SPI_send@data data `uc  1 p 1 2 ]
-"95
+"89
 [v SPI_send@addr addr `uc  1 a 1 4 ]
-"110
+"104
 } 0
-"46
+"47
 [v _ISR_function ISR_function `II(v  1 e 1 0 ]
 {
-"53
+"54
 } 0
