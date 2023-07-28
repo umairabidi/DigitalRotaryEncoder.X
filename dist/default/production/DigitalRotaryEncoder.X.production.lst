@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.41 build 20230208172133 
-                                                                                               Sat Jul 22 19:00:44 2023
+                                                                                               Tue Jul 25 01:00:45 2023
 
 Microchip MPLAB XC8 C Compiler v2.41 (Free license) build 20230208172133 Og9 
      1                           	processor	16F616
@@ -125,18 +125,18 @@ Microchip MPLAB XC8 C Compiler v2.41 (Free license) build 20230208172133 Og9
    111                           
    112                           ; Clear objects allocated to BANK0
    113     000B  1283               	bcf	3,5	;RP0=0, select bank0
-   114     000C  01AF               	clrf	__pbssBANK0& (0+127)
+   114     000C  01B6               	clrf	__pbssBANK0& (0+127)
    115     000D                     end_of_initialization:	
    116                           ;End of C runtime variable initialization code
    117                           
    118     000D                     __end_of__initialization:
    119     000D  0183               	clrf	3
-   120     000E  28FB               	ljmp	_main	;jump to C main() function
+   120     000E  294B               	ljmp	_main	;jump to C main() function
    121                           
    122                           	psect	bssBANK0
-   123     002F                     __pbssBANK0:
-   124     002F                     _int_F:
-   125     002F                     	ds	1
+   123     0036                     __pbssBANK0:
+   124     0036                     _int_F:
+   125     0036                     	ds	1
    126                           
    127                           	psect	cstackCOMMON
    128     0070                     __pcstackCOMMON:
@@ -151,1004 +151,1025 @@ Microchip MPLAB XC8 C Compiler v2.41 (Free license) build 20230208172133 Og9
    137                           ; 1 bytes @ 0x0
    138     0070                     	ds	2
    139     0072                     ?_SPI_send:
-   140     0072                     ?___awdiv:	
+   140     0072                     ?___lldiv:	
    141                           ; 1 bytes @ 0x2
    142                           
-   143     0072                     ?___awmod:	
-   144                           ; 2 bytes @ 0x2
+   143     0072                     ?___llmod:	
+   144                           ; 4 bytes @ 0x2
    145                           
    146     0072                     SPI_send@data:	
-   147                           ; 2 bytes @ 0x2
+   147                           ; 4 bytes @ 0x2
    148                           
-   149     0072                     ___awdiv@divisor:	
+   149     0072                     ___lldiv@divisor:	
    150                           ; 1 bytes @ 0x2
    151                           
-   152     0072                     ___awmod@divisor:	
-   153                           ; 2 bytes @ 0x2
+   152     0072                     ___llmod@divisor:	
+   153                           ; 4 bytes @ 0x2
    154                           
    155                           
-   156                           ; 2 bytes @ 0x2
+   156                           ; 4 bytes @ 0x2
    157     0072                     	ds	1
    158     0073                     ??_SPI_send:
    159                           
    160                           ; 1 bytes @ 0x3
    161     0073                     	ds	1
    162     0074                     SPI_send@addr:
-   163     0074                     ___awdiv@dividend:	
+   163                           
    164                           ; 1 bytes @ 0x4
-   165                           
-   166     0074                     ___awmod@dividend:	
-   167                           ; 2 bytes @ 0x4
-   168                           
-   169                           
-   170                           ; 2 bytes @ 0x4
-   171     0074                     	ds	1
-   172     0075                     SPI_send@i:
+   165     0074                     	ds	1
+   166     0075                     SPI_send@i:
+   167                           
+   168                           ; 2 bytes @ 0x5
+   169     0075                     	ds	1
+   170     0076                     ___lldiv@dividend:
+   171     0076                     ___llmod@dividend:	
+   172                           ; 4 bytes @ 0x6
    173                           
-   174                           ; 2 bytes @ 0x5
-   175     0075                     	ds	1
-   176     0076                     ??___awdiv:
-   177     0076                     ??___awmod:	
-   178                           ; 1 bytes @ 0x6
-   179                           
-   180     0076                     ___awdiv@counter:	
-   181                           ; 1 bytes @ 0x6
-   182                           
-   183     0076                     ___awmod@counter:	
-   184                           ; 1 bytes @ 0x6
+   174                           
+   175                           ; 4 bytes @ 0x6
+   176     0076                     	ds	1
+   177     0077                     ??_MAX7219_Setup:
+   178                           
+   179                           ; 1 bytes @ 0x7
+   180     0077                     	ds	3
+   181     007A                     ??___lldiv:
+   182     007A                     ??___llmod:	
+   183                           ; 1 bytes @ 0xA
+   184                           
    185                           
-   186                           
-   187                           ; 1 bytes @ 0x6
-   188     0076                     	ds	1
-   189     0077                     ??_MAX7219_Setup:
-   190     0077                     ___awdiv@sign:	
-   191                           ; 1 bytes @ 0x7
-   192                           
-   193     0077                     ___awmod@sign:	
-   194                           ; 1 bytes @ 0x7
+   186                           ; 1 bytes @ 0xA
+   187     007A                     	ds	1
+   188     007B                     ___llmod@counter:
+   189                           
+   190                           ; 1 bytes @ 0xB
+   191     007B                     	ds	1
+   192     007C                     ??_display_num:
+   193     007C                     ??_display_digit:	
+   194                           ; 1 bytes @ 0xC
    195                           
    196                           
-   197                           ; 1 bytes @ 0x7
-   198     0077                     	ds	1
-   199     0078                     ?_display_digit:
-   200     0078                     display_digit@digit_X:	
-   201                           ; 1 bytes @ 0x8
-   202                           
-   203     0078                     ___awdiv@quotient:	
-   204                           ; 2 bytes @ 0x8
-   205                           
-   206                           
-   207                           ; 2 bytes @ 0x8
-   208     0078                     	ds	2
-   209     007A                     display_digit@val:
-   210                           
-   211                           ; 2 bytes @ 0xA
-   212     007A                     	ds	2
-   213     007C                     ??_display_num:
-   214     007C                     ??_display_digit:	
-   215                           ; 1 bytes @ 0xC
+   197                           	psect	cstackBANK0
+   198     0020                     __pcstackBANK0:	
+   199                           ; 1 bytes @ 0xC
+   200                           
+   201     0020                     ?_display_digit:
+   202     0020                     display_digit@digit_X:	
+   203                           ; 1 bytes @ 0x0
+   204                           
+   205     0020                     ___lldiv@quotient:	
+   206                           ; 2 bytes @ 0x0
+   207                           
+   208                           
+   209                           ; 4 bytes @ 0x0
+   210     0020                     	ds	2
+   211     0022                     display_digit@val:
+   212                           
+   213                           ; 2 bytes @ 0x2
+   214     0022                     	ds	2
+   215     0024                     ___lldiv@counter:
    216                           
-   217                           
-   218                           	psect	cstackBANK0
-   219     0020                     __pcstackBANK0:	
-   220                           ; 1 bytes @ 0xC
-   221                           
-   222     0020                     ?_display_num:
-   223     0020                     display_num@val:	
-   224                           ; 1 bytes @ 0x0
-   225                           
-   226                           
-   227                           ; 2 bytes @ 0x0
-   228     0020                     	ds	2
-   229     0022                     display_num@i:
-   230                           
-   231                           ; 2 bytes @ 0x2
-   232     0022                     	ds	2
-   233     0024                     ?_main:
-   234     0024                     main@argc:	
-   235                           ; 2 bytes @ 0x4
-   236                           
-   237                           
-   238                           ; 2 bytes @ 0x4
-   239     0024                     	ds	2
-   240     0026                     main@argv:
-   241                           
-   242                           ; 2 bytes @ 0x6
-   243     0026                     	ds	2
-   244     0028                     ??_main:
-   245                           
-   246                           ; 1 bytes @ 0x8
-   247     0028                     	ds	4
-   248     002C                     main@counter:
-   249                           
-   250                           ; 2 bytes @ 0xC
-   251     002C                     	ds	2
-   252     002E                     main@dir:
+   217                           ; 1 bytes @ 0x4
+   218     0024                     	ds	1
+   219     0025                     ?_display_num:
+   220     0025                     display_num@val:	
+   221                           ; 1 bytes @ 0x5
+   222                           
+   223                           
+   224                           ; 4 bytes @ 0x5
+   225     0025                     	ds	4
+   226     0029                     display_num@i:
+   227                           
+   228                           ; 2 bytes @ 0x9
+   229     0029                     	ds	2
+   230     002B                     ?_main:
+   231     002B                     main@argc:	
+   232                           ; 2 bytes @ 0xB
+   233                           
+   234                           
+   235                           ; 2 bytes @ 0xB
+   236     002B                     	ds	2
+   237     002D                     main@argv:
+   238                           
+   239                           ; 2 bytes @ 0xD
+   240     002D                     	ds	2
+   241     002F                     ??_main:
+   242                           
+   243                           ; 1 bytes @ 0xF
+   244     002F                     	ds	4
+   245     0033                     main@counter:
+   246                           
+   247                           ; 2 bytes @ 0x13
+   248     0033                     	ds	2
+   249     0035                     main@dir:
+   250                           
+   251                           ; 1 bytes @ 0x15
+   252     0035                     	ds	1
    253                           
-   254                           ; 1 bytes @ 0xE
-   255     002E                     	ds	1
-   256                           
-   257                           	psect	maintext
-   258     00FB                     __pmaintext:	
-   259 ;;
-   260 ;;Main: autosize = 0, tempsize = 4, incstack = 0, save=0
-   261 ;;
-   262 ;; *************** function _main *****************
-   263 ;; Defined at:
-   264 ;;		line 56 in file "DigitalRotaryEncoder.c"
-   265 ;; Parameters:    Size  Location     Type
-   266 ;;  argc            2    4[BANK0 ] int 
-   267 ;;  argv            2    6[BANK0 ] PTR PTR unsigned char 
-   268 ;; Auto vars:     Size  Location     Type
-   269 ;;  counter         2   12[BANK0 ] unsigned int 
-   270 ;;  dir             1   14[BANK0 ] unsigned char 
-   271 ;; Return value:  Size  Location     Type
-   272 ;;                  2    4[BANK0 ] int 
-   273 ;; Registers used:
-   274 ;;		wreg, status,2, status,0, btemp+1, pclath, cstack
-   275 ;; Tracked objects:
-   276 ;;		On entry : B00/0
-   277 ;;		On exit  : 100/0
-   278 ;;		Unchanged: 0/0
-   279 ;; Data sizes:     COMMON   BANK0   BANK1
-   280 ;;      Params:         0       4       0
-   281 ;;      Locals:         0       3       0
-   282 ;;      Temps:          0       4       0
-   283 ;;      Totals:         0      11       0
-   284 ;;Total ram usage:       11 bytes
-   285 ;; Hardware stack levels required when called: 4
-   286 ;; This function calls:
-   287 ;;		_MAX7219_Setup
-   288 ;;		_display_num
-   289 ;; This function is called by:
-   290 ;;		Startup code after reset
-   291 ;; This function uses a non-reentrant model
-   292 ;;
+   254                           	psect	maintext
+   255     014B                     __pmaintext:	
+   256 ;;
+   257 ;;Main: autosize = 0, tempsize = 4, incstack = 0, save=0
+   258 ;;
+   259 ;; *************** function _main *****************
+   260 ;; Defined at:
+   261 ;;		line 56 in file "DigitalRotaryEncoder.c"
+   262 ;; Parameters:    Size  Location     Type
+   263 ;;  argc            2   11[BANK0 ] int 
+   264 ;;  argv            2   13[BANK0 ] PTR PTR unsigned char 
+   265 ;; Auto vars:     Size  Location     Type
+   266 ;;  counter         2   19[BANK0 ] unsigned int 
+   267 ;;  dir             1   21[BANK0 ] unsigned char 
+   268 ;; Return value:  Size  Location     Type
+   269 ;;                  2   11[BANK0 ] int 
+   270 ;; Registers used:
+   271 ;;		wreg, status,2, status,0, btemp+1, pclath, cstack
+   272 ;; Tracked objects:
+   273 ;;		On entry : B00/0
+   274 ;;		On exit  : 100/0
+   275 ;;		Unchanged: 0/0
+   276 ;; Data sizes:     COMMON   BANK0   BANK1
+   277 ;;      Params:         0       4       0
+   278 ;;      Locals:         0       3       0
+   279 ;;      Temps:          0       4       0
+   280 ;;      Totals:         0      11       0
+   281 ;;Total ram usage:       11 bytes
+   282 ;; Hardware stack levels required when called: 4
+   283 ;; This function calls:
+   284 ;;		_MAX7219_Setup
+   285 ;;		_display_num
+   286 ;; This function is called by:
+   287 ;;		Startup code after reset
+   288 ;; This function uses a non-reentrant model
+   289 ;;
+   290                           
+   291     014B                     _main:	
+   292                           ;psect for function _main
    293                           
-   294     00FB                     _main:	
-   295                           ;psect for function _main
+   294                           
+   295                           ;DigitalRotaryEncoder.c: 57: TRISCbits.TRISC2 = 0;
    296                           
-   297                           
-   298                           ;DigitalRotaryEncoder.c: 57: TRISCbits.TRISC2 = 0;
-   299                           
-   300                           ;incstack = 0
-   301                           ; Regs used in _main: [wreg+status,2+status,0+btemp+1+pclath+cstack]
-   302     00FB  1683               	bsf	3,5	;RP0=1, select bank1
-   303     00FC  1107               	bcf	7,2	;volatile
+   297                           ;incstack = 0
+   298                           ; Regs used in _main: [wreg+status,2+status,0+btemp+1+pclath+cstack]
+   299     014B  1683               	bsf	3,5	;RP0=1, select bank1
+   300     014C  1107               	bcf	7,2	;volatile
+   301                           
+   302                           ;DigitalRotaryEncoder.c: 58: TRISCbits.TRISC1 = 0;
+   303     014D  1087               	bcf	7,1	;volatile
    304                           
-   305                           ;DigitalRotaryEncoder.c: 58: TRISCbits.TRISC1 = 0;
-   306     00FD  1087               	bcf	7,1	;volatile
+   305                           ;DigitalRotaryEncoder.c: 59: TRISCbits.TRISC0 = 0;
+   306     014E  1007               	bcf	7,0	;volatile
    307                           
-   308                           ;DigitalRotaryEncoder.c: 59: TRISCbits.TRISC0 = 0;
-   309     00FE  1007               	bcf	7,0	;volatile
+   308                           ;DigitalRotaryEncoder.c: 60: ANSEL = 0;
+   309     014F  0191               	clrf	17	;volatile
    310                           
-   311                           ;DigitalRotaryEncoder.c: 60: ANSEL = 0;
-   312     00FF  0191               	clrf	17	;volatile
+   311                           ;DigitalRotaryEncoder.c: 61: IOCAbits.IOC0 = 1;
+   312     0150  1416               	bsf	22,0	;volatile
    313                           
-   314                           ;DigitalRotaryEncoder.c: 61: IOCAbits.IOC0 = 1;
-   315     0100  1416               	bsf	22,0	;volatile
+   314                           ;DigitalRotaryEncoder.c: 62: INTCONbits.GIE = 1;
+   315     0151  178B               	bsf	11,7	;volatile
    316                           
-   317                           ;DigitalRotaryEncoder.c: 62: INTCONbits.GIE = 1;
-   318     0101  178B               	bsf	11,7	;volatile
+   317                           ;DigitalRotaryEncoder.c: 63: INTCONbits.RAIE = 1;
+   318     0152  158B               	bsf	11,3	;volatile
    319                           
-   320                           ;DigitalRotaryEncoder.c: 63: INTCONbits.RAIE = 1;
-   321     0102  158B               	bsf	11,3	;volatile
-   322                           
-   323                           ;DigitalRotaryEncoder.c: 65: PORTCbits.RC0 = 0;
-   324     0103  1283               	bcf	3,5	;RP0=0, select bank0
-   325     0104  1007               	bcf	7,0	;volatile
+   320                           ;DigitalRotaryEncoder.c: 65: PORTCbits.RC0 = 0;
+   321     0153  1283               	bcf	3,5	;RP0=0, select bank0
+   322     0154  1007               	bcf	7,0	;volatile
+   323                           
+   324                           ;DigitalRotaryEncoder.c: 66: PORTCbits.RC1 = 1;
+   325     0155  1487               	bsf	7,1	;volatile
    326                           
-   327                           ;DigitalRotaryEncoder.c: 66: PORTCbits.RC1 = 1;
-   328     0105  1487               	bsf	7,1	;volatile
+   327                           ;DigitalRotaryEncoder.c: 67: PORTCbits.RC2 = 0;
+   328     0156  1107               	bcf	7,2	;volatile
    329                           
-   330                           ;DigitalRotaryEncoder.c: 67: PORTCbits.RC2 = 0;
-   331     0106  1107               	bcf	7,2	;volatile
+   330                           ;DigitalRotaryEncoder.c: 68: MAX7219_Setup();
+   331     0157  2190               	fcall	_MAX7219_Setup
    332                           
-   333                           ;DigitalRotaryEncoder.c: 68: MAX7219_Setup();
-   334     0107  2170               	fcall	_MAX7219_Setup
-   335                           
-   336                           ;DigitalRotaryEncoder.c: 70: uint16_t counter = 5;
-   337     0108  3005               	movlw	5
-   338     0109  00AC               	movwf	main@counter
-   339     010A  3000               	movlw	0
-   340     010B  00AD               	movwf	main@counter+1
+   333                           ;DigitalRotaryEncoder.c: 70: uint16_t counter = 5;
+   334     0158  3005               	movlw	5
+   335     0159  00B3               	movwf	main@counter
+   336     015A  3000               	movlw	0
+   337     015B  00B4               	movwf	main@counter+1
+   338                           
+   339                           ;DigitalRotaryEncoder.c: 71: uint8_t dir;;DigitalRotaryEncoder.c: 72: int_F = 0;
+   340     015C  01B6               	clrf	_int_F
    341                           
-   342                           ;DigitalRotaryEncoder.c: 71: uint8_t dir;;DigitalRotaryEncoder.c: 72: int_F = 0;
-   343     010C  01AF               	clrf	_int_F
-   344                           
-   345                           ;DigitalRotaryEncoder.c: 73: display_num(12345678);
-   346     010D  304E               	movlw	78
-   347     010E  00A0               	movwf	display_num@val
-   348     010F  3061               	movlw	97
-   349     0110  00A1               	movwf	display_num@val+1
-   350     0111  213A               	fcall	_display_num
-   351     0112                     l808:
-   352                           
-   353                           ;DigitalRotaryEncoder.c: 76: if (int_F){
-   354     0112  1283               	bcf	3,5	;RP0=0, select bank0
-   355     0113  082F               	movf	_int_F,w
-   356     0114  1903               	btfsc	3,2
-   357     0115  2912               	goto	l808
-   358                           
-   359                           ;DigitalRotaryEncoder.c: 77: dir = (PORTAbits.RA0 + PORTAbits.RA1)%2;
-   360     0116  0C05               	rrf	5,w	;volatile
-   361     0117  3901               	andlw	1
-   362     0118  00A8               	movwf	??_main
-   363     0119  0805               	movf	5,w	;volatile
-   364     011A  3901               	andlw	1
-   365     011B  0728               	addwf	??_main,w
-   366     011C  3901               	andlw	1
-   367     011D  00AE               	movwf	main@dir
-   368                           
-   369                           ;DigitalRotaryEncoder.c: 78: counter += dir*2 - 1;
-   370     011E  082E               	movf	main@dir,w
-   371     011F  00A8               	movwf	??_main
-   372     0120  01A9               	clrf	??_main+1
-   373     0121  1003               	clrc
-   374     0122  0DA8               	rlf	??_main,f
-   375     0123  0DA9               	rlf	??_main+1,f
-   376     0124  0828               	movf	??_main,w
-   377     0125  3EFF               	addlw	255
-   378     0126  00AA               	movwf	??_main+2
-   379     0127  0829               	movf	??_main+1,w
-   380     0128  1803               	skipnc
-   381     0129  3E01               	addlw	1
-   382     012A  3EFF               	addlw	255
-   383     012B  00AB               	movwf	??_main+3
-   384     012C  082A               	movf	??_main+2,w
-   385     012D  07AC               	addwf	main@counter,f
-   386     012E  1803               	skipnc
-   387     012F  0AAD               	incf	main@counter+1,f
-   388     0130  082B               	movf	??_main+3,w
-   389     0131  07AD               	addwf	main@counter+1,f
-   390                           
-   391                           ;DigitalRotaryEncoder.c: 79: display_num(counter);
-   392     0132  082D               	movf	main@counter+1,w
-   393     0133  00A1               	movwf	display_num@val+1
-   394     0134  082C               	movf	main@counter,w
-   395     0135  00A0               	movwf	display_num@val
-   396     0136  213A               	fcall	_display_num
-   397                           
-   398                           ;DigitalRotaryEncoder.c: 80: int_F = 0;
-   399     0137  1283               	bcf	3,5	;RP0=0, select bank0
-   400     0138  01AF               	clrf	_int_F
-   401     0139  2912               	goto	l808
-   402     013A                     __end_of_main:
-   403                           
-   404                           	psect	text1
-   405     013A                     __ptext1:	
-   406 ;; *************** function _display_num *****************
-   407 ;; Defined at:
-   408 ;;		line 118 in file "DigitalRotaryEncoder.c"
-   409 ;; Parameters:    Size  Location     Type
-   410 ;;  val             2    0[BANK0 ] int 
-   411 ;; Auto vars:     Size  Location     Type
-   412 ;;  i               2    2[BANK0 ] int 
-   413 ;; Return value:  Size  Location     Type
-   414 ;;                  1    wreg      void 
-   415 ;; Registers used:
-   416 ;;		wreg, status,2, status,0, btemp+1, pclath, cstack
-   417 ;; Tracked objects:
-   418 ;;		On entry : 100/0
-   419 ;;		On exit  : 0/0
-   420 ;;		Unchanged: 0/0
-   421 ;; Data sizes:     COMMON   BANK0   BANK1
-   422 ;;      Params:         0       2       0
-   423 ;;      Locals:         0       2       0
-   424 ;;      Temps:          0       0       0
-   425 ;;      Totals:         0       4       0
-   426 ;;Total ram usage:        4 bytes
-   427 ;; Hardware stack levels used: 1
-   428 ;; Hardware stack levels required when called: 3
-   429 ;; This function calls:
-   430 ;;		___awdiv
-   431 ;;		___awmod
-   432 ;;		_display_digit
-   433 ;; This function is called by:
-   434 ;;		_main
-   435 ;; This function uses a non-reentrant model
-   436 ;;
-   437                           
-   438     013A                     _display_num:	
-   439                           ;psect for function _display_num
+   342                           ;DigitalRotaryEncoder.c: 73: display_num(12345678);
+   343     015D  3000               	movlw	0
+   344     015E  00A8               	movwf	display_num@val+3
+   345     015F  30BC               	movlw	188
+   346     0160  00A7               	movwf	display_num@val+2
+   347     0161  3061               	movlw	97
+   348     0162  00A6               	movwf	display_num@val+1
+   349     0163  304E               	movlw	78
+   350     0164  00A5               	movwf	display_num@val
+   351     0165  20B9               	fcall	_display_num
+   352     0166                     l740:
+   353                           
+   354                           ;DigitalRotaryEncoder.c: 76: if (int_F){
+   355     0166  1283               	bcf	3,5	;RP0=0, select bank0
+   356     0167  0836               	movf	_int_F,w
+   357     0168  1903               	btfsc	3,2
+   358     0169  2966               	goto	l740
+   359                           
+   360                           ;DigitalRotaryEncoder.c: 77: dir = (PORTAbits.RA0 + PORTAbits.RA1)%2;
+   361     016A  0C05               	rrf	5,w	;volatile
+   362     016B  3901               	andlw	1
+   363     016C  00AF               	movwf	??_main
+   364     016D  0805               	movf	5,w	;volatile
+   365     016E  3901               	andlw	1
+   366     016F  072F               	addwf	??_main,w
+   367     0170  3901               	andlw	1
+   368     0171  00B5               	movwf	main@dir
+   369                           
+   370                           ;DigitalRotaryEncoder.c: 78: counter += dir*2 - 1;
+   371     0172  0835               	movf	main@dir,w
+   372     0173  00AF               	movwf	??_main
+   373     0174  01B0               	clrf	??_main+1
+   374     0175  1003               	clrc
+   375     0176  0DAF               	rlf	??_main,f
+   376     0177  0DB0               	rlf	??_main+1,f
+   377     0178  082F               	movf	??_main,w
+   378     0179  3EFF               	addlw	255
+   379     017A  00B1               	movwf	??_main+2
+   380     017B  0830               	movf	??_main+1,w
+   381     017C  1803               	skipnc
+   382     017D  3E01               	addlw	1
+   383     017E  3EFF               	addlw	255
+   384     017F  00B2               	movwf	??_main+3
+   385     0180  0831               	movf	??_main+2,w
+   386     0181  07B3               	addwf	main@counter,f
+   387     0182  1803               	skipnc
+   388     0183  0AB4               	incf	main@counter+1,f
+   389     0184  0832               	movf	??_main+3,w
+   390     0185  07B4               	addwf	main@counter+1,f
+   391                           
+   392                           ;DigitalRotaryEncoder.c: 79: display_num(counter);
+   393     0186  0833               	movf	main@counter,w
+   394     0187  00A5               	movwf	display_num@val
+   395     0188  0834               	movf	main@counter+1,w
+   396     0189  00A6               	movwf	display_num@val+1
+   397     018A  01A7               	clrf	display_num@val+2
+   398     018B  01A8               	clrf	display_num@val+3
+   399     018C  20B9               	fcall	_display_num
+   400                           
+   401                           ;DigitalRotaryEncoder.c: 80: int_F = 0;
+   402     018D  1283               	bcf	3,5	;RP0=0, select bank0
+   403     018E  01B6               	clrf	_int_F
+   404     018F  2966               	goto	l740
+   405     0190                     __end_of_main:
+   406                           
+   407                           	psect	text1
+   408     00B9                     __ptext1:	
+   409 ;; *************** function _display_num *****************
+   410 ;; Defined at:
+   411 ;;		line 118 in file "DigitalRotaryEncoder.c"
+   412 ;; Parameters:    Size  Location     Type
+   413 ;;  val             4    5[BANK0 ] unsigned long 
+   414 ;; Auto vars:     Size  Location     Type
+   415 ;;  i               2    9[BANK0 ] int 
+   416 ;; Return value:  Size  Location     Type
+   417 ;;                  1    wreg      void 
+   418 ;; Registers used:
+   419 ;;		wreg, status,2, status,0, btemp+1, pclath, cstack
+   420 ;; Tracked objects:
+   421 ;;		On entry : 100/0
+   422 ;;		On exit  : 0/0
+   423 ;;		Unchanged: 0/0
+   424 ;; Data sizes:     COMMON   BANK0   BANK1
+   425 ;;      Params:         0       4       0
+   426 ;;      Locals:         0       2       0
+   427 ;;      Temps:          0       0       0
+   428 ;;      Totals:         0       6       0
+   429 ;;Total ram usage:        6 bytes
+   430 ;; Hardware stack levels used: 1
+   431 ;; Hardware stack levels required when called: 3
+   432 ;; This function calls:
+   433 ;;		___lldiv
+   434 ;;		___llmod
+   435 ;;		_display_digit
+   436 ;; This function is called by:
+   437 ;;		_main
+   438 ;; This function uses a non-reentrant model
+   439 ;;
    440                           
-   441                           
-   442                           ;DigitalRotaryEncoder.c: 119: int i;;DigitalRotaryEncoder.c: 120: for (i=1; i<=8; i++){
+   441     00B9                     _display_num:	
+   442                           ;psect for function _display_num
    443                           
-   444                           ;incstack = 0
-   445                           ; Regs used in _display_num: [wreg+status,2+status,0+btemp+1+pclath+cstack]
-   446     013A  3001               	movlw	1
-   447     013B  00A2               	movwf	display_num@i
-   448     013C  3000               	movlw	0
-   449     013D  00A3               	movwf	display_num@i+1
-   450     013E                     l774:
-   451                           
-   452                           ;DigitalRotaryEncoder.c: 121: display_digit(i, val%10);
-   453     013E  1283               	bcf	3,5	;RP0=0, select bank0
-   454     013F  0823               	movf	display_num@i+1,w
-   455     0140  00F9               	movwf	display_digit@digit_X+1
-   456     0141  0822               	movf	display_num@i,w
-   457     0142  00F8               	movwf	display_digit@digit_X
-   458     0143  300A               	movlw	10
-   459     0144  00F2               	movwf	___awmod@divisor
-   460     0145  3000               	movlw	0
-   461     0146  00F3               	movwf	___awmod@divisor+1
-   462     0147  0821               	movf	display_num@val+1,w
-   463     0148  00F5               	movwf	___awmod@dividend+1
-   464     0149  0820               	movf	display_num@val,w
-   465     014A  00F4               	movwf	___awmod@dividend
-   466     014B  2068               	fcall	___awmod
-   467     014C  0873               	movf	?___awmod+1,w
-   468     014D  00FB               	movwf	display_digit@val+1
-   469     014E  0872               	movf	?___awmod,w
-   470     014F  00FA               	movwf	display_digit@val
-   471     0150  2191               	fcall	_display_digit
-   472                           
-   473                           ;DigitalRotaryEncoder.c: 122: val /= 10;
-   474     0151  300A               	movlw	10
-   475     0152  00F2               	movwf	___awdiv@divisor
-   476     0153  3000               	movlw	0
-   477     0154  00F3               	movwf	___awdiv@divisor+1
-   478     0155  0821               	movf	display_num@val+1,w
-   479     0156  00F5               	movwf	___awdiv@dividend+1
-   480     0157  0820               	movf	display_num@val,w
-   481     0158  00F4               	movwf	___awdiv@dividend
-   482     0159  200F               	fcall	___awdiv
-   483     015A  0873               	movf	?___awdiv+1,w
-   484     015B  00A1               	movwf	display_num@val+1
-   485     015C  0872               	movf	?___awdiv,w
-   486     015D  00A0               	movwf	display_num@val
-   487     015E  3001               	movlw	1
-   488     015F  07A2               	addwf	display_num@i,f
-   489     0160  1803               	skipnc
-   490     0161  0AA3               	incf	display_num@i+1,f
-   491     0162  3000               	movlw	0
-   492     0163  07A3               	addwf	display_num@i+1,f
-   493     0164  0823               	movf	display_num@i+1,w
-   494     0165  3A80               	xorlw	128
-   495     0166  00FF               	movwf	127
-   496     0167  3080               	movlw	128
-   497     0168  027F               	subwf	127,w
-   498     0169  1D03               	skipz
-   499     016A  296D               	goto	u545
-   500     016B  3009               	movlw	9
-   501     016C  0222               	subwf	display_num@i,w
-   502     016D                     u545:
-   503     016D  1803               	btfsc	3,0
-   504     016E  0008               	return
-   505     016F  293E               	goto	l774
-   506     0170                     __end_of_display_num:
-   507                           
-   508                           	psect	text2
-   509     0191                     __ptext2:	
-   510 ;; *************** function _display_digit *****************
-   511 ;; Defined at:
-   512 ;;		line 114 in file "DigitalRotaryEncoder.c"
-   513 ;; Parameters:    Size  Location     Type
-   514 ;;  digit_X         2    8[COMMON] int 
-   515 ;;  val             2   10[COMMON] int 
-   516 ;; Auto vars:     Size  Location     Type
-   517 ;;		None
-   518 ;; Return value:  Size  Location     Type
-   519 ;;                  1    wreg      void 
-   520 ;; Registers used:
-   521 ;;		wreg, status,2, status,0, btemp+1, pclath, cstack
-   522 ;; Tracked objects:
-   523 ;;		On entry : 100/0
-   524 ;;		On exit  : 100/0
-   525 ;;		Unchanged: 0/0
-   526 ;; Data sizes:     COMMON   BANK0   BANK1
-   527 ;;      Params:         4       0       0
-   528 ;;      Locals:         0       0       0
-   529 ;;      Temps:          0       0       0
-   530 ;;      Totals:         4       0       0
-   531 ;;Total ram usage:        4 bytes
-   532 ;; Hardware stack levels used: 1
-   533 ;; Hardware stack levels required when called: 2
-   534 ;; This function calls:
-   535 ;;		_SPI_send
-   536 ;; This function is called by:
-   537 ;;		_display_num
-   538 ;; This function uses a non-reentrant model
-   539 ;;
-   540                           
-   541     0191                     _display_digit:	
-   542                           ;psect for function _display_digit
-   543                           
-   544                           
-   545                           ;DigitalRotaryEncoder.c: 115: SPI_send(digit_X, val);
-   546                           
-   547                           ;incstack = 0
-   548                           ; Regs used in _display_digit: [wreg+status,2+status,0+btemp+1+pclath+cstack]
-   549     0191  087A               	movf	display_digit@val,w
-   550     0192  00F2               	movwf	SPI_send@data
-   551     0193  0878               	movf	display_digit@digit_X,w
-   552     0194  20B3               	fcall	_SPI_send
-   553     0195  0008               	return
-   554     0196                     __end_of_display_digit:
-   555                           
-   556                           	psect	text3
-   557     0068                     __ptext3:	
-   558 ;; *************** function ___awmod *****************
-   559 ;; Defined at:
-   560 ;;		line 5 in file "C:\Program Files\Microchip\xc8\v2.41\pic\sources\c90\common\awmod.c"
-   561 ;; Parameters:    Size  Location     Type
-   562 ;;  divisor         2    2[COMMON] int 
-   563 ;;  dividend        2    4[COMMON] int 
-   564 ;; Auto vars:     Size  Location     Type
-   565 ;;  sign            1    7[COMMON] unsigned char 
-   566 ;;  counter         1    6[COMMON] unsigned char 
-   567 ;; Return value:  Size  Location     Type
-   568 ;;                  2    2[COMMON] int 
-   569 ;; Registers used:
-   570 ;;		wreg, status,2, status,0, btemp+1
-   571 ;; Tracked objects:
-   572 ;;		On entry : 100/0
-   573 ;;		On exit  : 100/0
-   574 ;;		Unchanged: 100/0
-   575 ;; Data sizes:     COMMON   BANK0   BANK1
-   576 ;;      Params:         4       0       0
-   577 ;;      Locals:         2       0       0
-   578 ;;      Temps:          0       0       0
-   579 ;;      Totals:         6       0       0
-   580 ;;Total ram usage:        6 bytes
-   581 ;; Hardware stack levels used: 1
-   582 ;; Hardware stack levels required when called: 1
-   583 ;; This function calls:
-   584 ;;		Nothing
-   585 ;; This function is called by:
-   586 ;;		_display_num
-   587 ;; This function uses a non-reentrant model
-   588 ;;
-   589                           
-   590     0068                     ___awmod:	
-   591                           ;psect for function ___awmod
-   592                           
-   593                           
-   594                           ;incstack = 0
-   595                           ; Regs used in ___awmod: [wreg+status,2+status,0+btemp+1]
-   596     0068  01F7               	clrf	___awmod@sign
-   597     0069  1FF5               	btfss	___awmod@dividend+1,7
-   598     006A  2872               	goto	l736
-   599     006B  09F4               	comf	___awmod@dividend,f
-   600     006C  09F5               	comf	___awmod@dividend+1,f
-   601     006D  0AF4               	incf	___awmod@dividend,f
-   602     006E  1903               	skipnz
-   603     006F  0AF5               	incf	___awmod@dividend+1,f
-   604     0070  01F7               	clrf	___awmod@sign
-   605     0071  0AF7               	incf	___awmod@sign,f
-   606     0072                     l736:
-   607     0072  1FF3               	btfss	___awmod@divisor+1,7
-   608     0073  2879               	goto	l740
-   609     0074  09F2               	comf	___awmod@divisor,f
-   610     0075  09F3               	comf	___awmod@divisor+1,f
-   611     0076  0AF2               	incf	___awmod@divisor,f
-   612     0077  1903               	skipnz
-   613     0078  0AF3               	incf	___awmod@divisor+1,f
-   614     0079                     l740:
-   615     0079  0872               	movf	___awmod@divisor,w
-   616     007A  0473               	iorwf	___awmod@divisor+1,w
-   617     007B  1903               	btfsc	3,2
-   618     007C  28A6               	goto	l758
-   619     007D  01F6               	clrf	___awmod@counter
-   620     007E  0AF6               	incf	___awmod@counter,f
-   621     007F                     l748:
-   622     007F  1BF3               	btfsc	___awmod@divisor+1,7
-   623     0080  288D               	goto	l750
-   624     0081  3001               	movlw	1
-   625     0082                     u485:
-   626     0082  1003               	clrc
-   627     0083  0DF2               	rlf	___awmod@divisor,f
-   628     0084  0DF3               	rlf	___awmod@divisor+1,f
-   629     0085  3EFF               	addlw	-1
-   630     0086  1D03               	skipz
-   631     0087  2882               	goto	u485
-   632     0088  3001               	movlw	1
-   633     0089  00FF               	movwf	127
-   634     008A  087F               	movf	127,w
-   635     008B  07F6               	addwf	___awmod@counter,f
-   636     008C  287F               	goto	l748
-   637     008D                     l750:
-   638     008D  0873               	movf	___awmod@divisor+1,w
-   639     008E  0275               	subwf	___awmod@dividend+1,w
-   640     008F  1D03               	skipz
-   641     0090  2893               	goto	u505
-   642     0091  0872               	movf	___awmod@divisor,w
-   643     0092  0274               	subwf	___awmod@dividend,w
-   644     0093                     u505:
-   645     0093  1C03               	skipc
-   646     0094  289B               	goto	l754
-   647     0095  0872               	movf	___awmod@divisor,w
-   648     0096  02F4               	subwf	___awmod@dividend,f
-   649     0097  0873               	movf	___awmod@divisor+1,w
-   650     0098  1C03               	skipc
-   651     0099  03F5               	decf	___awmod@dividend+1,f
-   652     009A  02F5               	subwf	___awmod@dividend+1,f
-   653     009B                     l754:
-   654     009B  3001               	movlw	1
-   655     009C                     u515:
-   656     009C  1003               	clrc
-   657     009D  0CF3               	rrf	___awmod@divisor+1,f
-   658     009E  0CF2               	rrf	___awmod@divisor,f
-   659     009F  3EFF               	addlw	-1
-   660     00A0  1D03               	skipz
-   661     00A1  289C               	goto	u515
-   662     00A2  3001               	movlw	1
-   663     00A3  02F6               	subwf	___awmod@counter,f
-   664     00A4  1D03               	btfss	3,2
-   665     00A5  288D               	goto	l750
-   666     00A6                     l758:
-   667     00A6  0877               	movf	___awmod@sign,w
-   668     00A7  1903               	btfsc	3,2
-   669     00A8  28AE               	goto	l762
-   670     00A9  09F4               	comf	___awmod@dividend,f
-   671     00AA  09F5               	comf	___awmod@dividend+1,f
-   672     00AB  0AF4               	incf	___awmod@dividend,f
-   673     00AC  1903               	skipnz
-   674     00AD  0AF5               	incf	___awmod@dividend+1,f
-   675     00AE                     l762:
-   676     00AE  0875               	movf	___awmod@dividend+1,w
-   677     00AF  00F3               	movwf	?___awmod+1
-   678     00B0  0874               	movf	___awmod@dividend,w
-   679     00B1  00F2               	movwf	?___awmod
-   680     00B2  0008               	return
-   681     00B3                     __end_of___awmod:
-   682                           
-   683                           	psect	text4
-   684     000F                     __ptext4:	
-   685 ;; *************** function ___awdiv *****************
-   686 ;; Defined at:
-   687 ;;		line 5 in file "C:\Program Files\Microchip\xc8\v2.41\pic\sources\c90\common\awdiv.c"
-   688 ;; Parameters:    Size  Location     Type
-   689 ;;  divisor         2    2[COMMON] int 
-   690 ;;  dividend        2    4[COMMON] int 
-   691 ;; Auto vars:     Size  Location     Type
-   692 ;;  quotient        2    8[COMMON] int 
-   693 ;;  sign            1    7[COMMON] unsigned char 
-   694 ;;  counter         1    6[COMMON] unsigned char 
-   695 ;; Return value:  Size  Location     Type
-   696 ;;                  2    2[COMMON] int 
-   697 ;; Registers used:
-   698 ;;		wreg, status,2, status,0, btemp+1
-   699 ;; Tracked objects:
-   700 ;;		On entry : 100/0
-   701 ;;		On exit  : 100/0
-   702 ;;		Unchanged: 100/0
-   703 ;; Data sizes:     COMMON   BANK0   BANK1
-   704 ;;      Params:         4       0       0
-   705 ;;      Locals:         4       0       0
-   706 ;;      Temps:          0       0       0
-   707 ;;      Totals:         8       0       0
-   708 ;;Total ram usage:        8 bytes
-   709 ;; Hardware stack levels used: 1
-   710 ;; Hardware stack levels required when called: 1
-   711 ;; This function calls:
-   712 ;;		Nothing
-   713 ;; This function is called by:
-   714 ;;		_display_num
-   715 ;; This function uses a non-reentrant model
-   716 ;;
-   717                           
-   718     000F                     ___awdiv:	
-   719                           ;psect for function ___awdiv
-   720                           
-   721                           
-   722                           ;incstack = 0
-   723                           ; Regs used in ___awdiv: [wreg+status,2+status,0+btemp+1]
-   724     000F  01F7               	clrf	___awdiv@sign
-   725     0010  1FF3               	btfss	___awdiv@divisor+1,7
-   726     0011  2819               	goto	l692
-   727     0012  09F2               	comf	___awdiv@divisor,f
-   728     0013  09F3               	comf	___awdiv@divisor+1,f
-   729     0014  0AF2               	incf	___awdiv@divisor,f
-   730     0015  1903               	skipnz
-   731     0016  0AF3               	incf	___awdiv@divisor+1,f
-   732     0017  01F7               	clrf	___awdiv@sign
-   733     0018  0AF7               	incf	___awdiv@sign,f
-   734     0019                     l692:
-   735     0019  1FF5               	btfss	___awdiv@dividend+1,7
-   736     001A  2824               	goto	l698
-   737     001B  09F4               	comf	___awdiv@dividend,f
-   738     001C  09F5               	comf	___awdiv@dividend+1,f
-   739     001D  0AF4               	incf	___awdiv@dividend,f
-   740     001E  1903               	skipnz
-   741     001F  0AF5               	incf	___awdiv@dividend+1,f
-   742     0020  3001               	movlw	1
-   743     0021  00FF               	movwf	127
-   744     0022  087F               	movf	127,w
-   745     0023  06F7               	xorwf	___awdiv@sign,f
-   746     0024                     l698:
-   747     0024  01F8               	clrf	___awdiv@quotient
-   748     0025  01F9               	clrf	___awdiv@quotient+1
-   749     0026  0872               	movf	___awdiv@divisor,w
-   750     0027  0473               	iorwf	___awdiv@divisor+1,w
-   751     0028  1903               	btfsc	3,2
-   752     0029  285B               	goto	l720
-   753     002A  01F6               	clrf	___awdiv@counter
-   754     002B  0AF6               	incf	___awdiv@counter,f
-   755     002C                     l708:
-   756     002C  1BF3               	btfsc	___awdiv@divisor+1,7
-   757     002D  283A               	goto	l710
-   758     002E  3001               	movlw	1
-   759     002F                     u385:
-   760     002F  1003               	clrc
-   761     0030  0DF2               	rlf	___awdiv@divisor,f
-   762     0031  0DF3               	rlf	___awdiv@divisor+1,f
-   763     0032  3EFF               	addlw	-1
-   764     0033  1D03               	skipz
-   765     0034  282F               	goto	u385
-   766     0035  3001               	movlw	1
-   767     0036  00FF               	movwf	127
-   768     0037  087F               	movf	127,w
-   769     0038  07F6               	addwf	___awdiv@counter,f
-   770     0039  282C               	goto	l708
-   771     003A                     l710:
-   772     003A  3001               	movlw	1
-   773     003B                     u405:
-   774     003B  1003               	clrc
-   775     003C  0DF8               	rlf	___awdiv@quotient,f
-   776     003D  0DF9               	rlf	___awdiv@quotient+1,f
-   777     003E  3EFF               	addlw	-1
-   778     003F  1D03               	skipz
-   779     0040  283B               	goto	u405
-   780     0041  0873               	movf	___awdiv@divisor+1,w
-   781     0042  0275               	subwf	___awdiv@dividend+1,w
-   782     0043  1D03               	skipz
-   783     0044  2847               	goto	u415
-   784     0045  0872               	movf	___awdiv@divisor,w
-   785     0046  0274               	subwf	___awdiv@dividend,w
-   786     0047                     u415:
-   787     0047  1C03               	skipc
-   788     0048  2850               	goto	l716
-   789     0049  0872               	movf	___awdiv@divisor,w
-   790     004A  02F4               	subwf	___awdiv@dividend,f
-   791     004B  0873               	movf	___awdiv@divisor+1,w
-   792     004C  1C03               	skipc
-   793     004D  03F5               	decf	___awdiv@dividend+1,f
-   794     004E  02F5               	subwf	___awdiv@dividend+1,f
-   795     004F  1478               	bsf	___awdiv@quotient,0
-   796     0050                     l716:
-   797     0050  3001               	movlw	1
-   798     0051                     u425:
-   799     0051  1003               	clrc
-   800     0052  0CF3               	rrf	___awdiv@divisor+1,f
-   801     0053  0CF2               	rrf	___awdiv@divisor,f
-   802     0054  3EFF               	addlw	-1
-   803     0055  1D03               	skipz
-   804     0056  2851               	goto	u425
-   805     0057  3001               	movlw	1
-   806     0058  02F6               	subwf	___awdiv@counter,f
-   807     0059  1D03               	btfss	3,2
-   808     005A  283A               	goto	l710
-   809     005B                     l720:
-   810     005B  0877               	movf	___awdiv@sign,w
-   811     005C  1903               	btfsc	3,2
-   812     005D  2863               	goto	l724
-   813     005E  09F8               	comf	___awdiv@quotient,f
-   814     005F  09F9               	comf	___awdiv@quotient+1,f
-   815     0060  0AF8               	incf	___awdiv@quotient,f
-   816     0061  1903               	skipnz
-   817     0062  0AF9               	incf	___awdiv@quotient+1,f
-   818     0063                     l724:
-   819     0063  0879               	movf	___awdiv@quotient+1,w
-   820     0064  00F3               	movwf	?___awdiv+1
-   821     0065  0878               	movf	___awdiv@quotient,w
-   822     0066  00F2               	movwf	?___awdiv
-   823     0067  0008               	return
-   824     0068                     __end_of___awdiv:
-   825                           
-   826                           	psect	text5
-   827     0170                     __ptext5:	
-   828 ;; *************** function _MAX7219_Setup *****************
-   829 ;; Defined at:
-   830 ;;		line 106 in file "DigitalRotaryEncoder.c"
-   831 ;; Parameters:    Size  Location     Type
-   832 ;;		None
-   833 ;; Auto vars:     Size  Location     Type
-   834 ;;		None
-   835 ;; Return value:  Size  Location     Type
-   836 ;;                  1    wreg      void 
-   837 ;; Registers used:
-   838 ;;		wreg, status,2, status,0, btemp+1, pclath, cstack
-   839 ;; Tracked objects:
-   840 ;;		On entry : B00/0
-   841 ;;		On exit  : 100/0
-   842 ;;		Unchanged: 0/0
-   843 ;; Data sizes:     COMMON   BANK0   BANK1
-   844 ;;      Params:         0       0       0
-   845 ;;      Locals:         0       0       0
-   846 ;;      Temps:          0       0       0
-   847 ;;      Totals:         0       0       0
-   848 ;;Total ram usage:        0 bytes
-   849 ;; Hardware stack levels used: 1
-   850 ;; Hardware stack levels required when called: 2
-   851 ;; This function calls:
-   852 ;;		_SPI_send
-   853 ;; This function is called by:
-   854 ;;		_main
-   855 ;; This function uses a non-reentrant model
-   856 ;;
-   857                           
-   858     0170                     _MAX7219_Setup:	
-   859                           ;psect for function _MAX7219_Setup
-   860                           
-   861                           
-   862                           ;DigitalRotaryEncoder.c: 107: SPI_send(0x0F,0x00);
-   863                           
-   864                           ;incstack = 0
-   865                           ; Regs used in _MAX7219_Setup: [wreg+status,2+status,0+btemp+1+pclath+cstack]
-   866     0170  01F2               	clrf	SPI_send@data
-   867     0171  300F               	movlw	15
-   868     0172  20B3               	fcall	_SPI_send
-   869                           
-   870                           ;DigitalRotaryEncoder.c: 108: SPI_send(0x09,0xFF);
-   871     0173  30FF               	movlw	255
-   872     0174  00F2               	movwf	SPI_send@data
-   873     0175  3009               	movlw	9
-   874     0176  20B3               	fcall	_SPI_send
-   875                           
-   876                           ;DigitalRotaryEncoder.c: 109: SPI_send(0x0A,0x08);
-   877     0177  3008               	movlw	8
-   878     0178  00F2               	movwf	SPI_send@data
-   879     0179  300A               	movlw	10
-   880     017A  20B3               	fcall	_SPI_send
+   444                           
+   445                           ;DigitalRotaryEncoder.c: 119: int i;;DigitalRotaryEncoder.c: 120: for (i=1; i<=8; i++){
+   446                           
+   447                           ;incstack = 0
+   448                           ; Regs used in _display_num: [wreg+status,2+status,0+btemp+1+pclath+cstack]
+   449     00B9  3001               	movlw	1
+   450     00BA  00A9               	movwf	display_num@i
+   451     00BB  3000               	movlw	0
+   452     00BC  00AA               	movwf	display_num@i+1
+   453     00BD                     l706:
+   454                           
+   455                           ;DigitalRotaryEncoder.c: 121: display_digit(i, val%10);
+   456     00BD  1283               	bcf	3,5	;RP0=0, select bank0
+   457     00BE  082A               	movf	display_num@i+1,w
+   458     00BF  00A1               	movwf	display_digit@digit_X+1
+   459     00C0  0829               	movf	display_num@i,w
+   460     00C1  00A0               	movwf	display_digit@digit_X
+   461     00C2  3000               	movlw	0
+   462     00C3  00F5               	movwf	___llmod@divisor+3
+   463     00C4  3000               	movlw	0
+   464     00C5  00F4               	movwf	___llmod@divisor+2
+   465     00C6  3000               	movlw	0
+   466     00C7  00F3               	movwf	___llmod@divisor+1
+   467     00C8  300A               	movlw	10
+   468     00C9  00F2               	movwf	___llmod@divisor
+   469     00CA  0828               	movf	display_num@val+3,w
+   470     00CB  00F9               	movwf	___llmod@dividend+3
+   471     00CC  0827               	movf	display_num@val+2,w
+   472     00CD  00F8               	movwf	___llmod@dividend+2
+   473     00CE  0826               	movf	display_num@val+1,w
+   474     00CF  00F7               	movwf	___llmod@dividend+1
+   475     00D0  0825               	movf	display_num@val,w
+   476     00D1  00F6               	movwf	___llmod@dividend
+   477     00D2  206D               	fcall	___llmod
+   478     00D3  0873               	movf	?___llmod+1,w
+   479     00D4  00A3               	movwf	display_digit@val+1
+   480     00D5  0872               	movf	?___llmod,w
+   481     00D6  00A2               	movwf	display_digit@val
+   482     00D7  21B1               	fcall	_display_digit
+   483                           
+   484                           ;DigitalRotaryEncoder.c: 122: val /= 10;
+   485     00D8  3000               	movlw	0
+   486     00D9  00F5               	movwf	___lldiv@divisor+3
+   487     00DA  3000               	movlw	0
+   488     00DB  00F4               	movwf	___lldiv@divisor+2
+   489     00DC  3000               	movlw	0
+   490     00DD  00F3               	movwf	___lldiv@divisor+1
+   491     00DE  300A               	movlw	10
+   492     00DF  00F2               	movwf	___lldiv@divisor
+   493     00E0  0828               	movf	display_num@val+3,w
+   494     00E1  00F9               	movwf	___lldiv@dividend+3
+   495     00E2  0827               	movf	display_num@val+2,w
+   496     00E3  00F8               	movwf	___lldiv@dividend+2
+   497     00E4  0826               	movf	display_num@val+1,w
+   498     00E5  00F7               	movwf	___lldiv@dividend+1
+   499     00E6  0825               	movf	display_num@val,w
+   500     00E7  00F6               	movwf	___lldiv@dividend
+   501     00E8  200F               	fcall	___lldiv
+   502     00E9  0875               	movf	?___lldiv+3,w
+   503     00EA  00A8               	movwf	display_num@val+3
+   504     00EB  0874               	movf	?___lldiv+2,w
+   505     00EC  00A7               	movwf	display_num@val+2
+   506     00ED  0873               	movf	?___lldiv+1,w
+   507     00EE  00A6               	movwf	display_num@val+1
+   508     00EF  0872               	movf	?___lldiv,w
+   509     00F0  00A5               	movwf	display_num@val
+   510     00F1  3001               	movlw	1
+   511     00F2  07A9               	addwf	display_num@i,f
+   512     00F3  1803               	skipnc
+   513     00F4  0AAA               	incf	display_num@i+1,f
+   514     00F5  3000               	movlw	0
+   515     00F6  07AA               	addwf	display_num@i+1,f
+   516     00F7  082A               	movf	display_num@i+1,w
+   517     00F8  3A80               	xorlw	128
+   518     00F9  00FF               	movwf	127
+   519     00FA  3080               	movlw	128
+   520     00FB  027F               	subwf	127,w
+   521     00FC  1D03               	skipz
+   522     00FD  2900               	goto	u425
+   523     00FE  3009               	movlw	9
+   524     00FF  0229               	subwf	display_num@i,w
+   525     0100                     u425:
+   526     0100  1803               	btfsc	3,0
+   527     0101  0008               	return
+   528     0102  28BD               	goto	l706
+   529     0103                     __end_of_display_num:
+   530                           
+   531                           	psect	text2
+   532     01B1                     __ptext2:	
+   533 ;; *************** function _display_digit *****************
+   534 ;; Defined at:
+   535 ;;		line 114 in file "DigitalRotaryEncoder.c"
+   536 ;; Parameters:    Size  Location     Type
+   537 ;;  digit_X         2    0[BANK0 ] int 
+   538 ;;  val             2    2[BANK0 ] int 
+   539 ;; Auto vars:     Size  Location     Type
+   540 ;;		None
+   541 ;; Return value:  Size  Location     Type
+   542 ;;                  1    wreg      void 
+   543 ;; Registers used:
+   544 ;;		wreg, status,2, status,0, btemp+1, pclath, cstack
+   545 ;; Tracked objects:
+   546 ;;		On entry : 100/0
+   547 ;;		On exit  : 100/0
+   548 ;;		Unchanged: 0/0
+   549 ;; Data sizes:     COMMON   BANK0   BANK1
+   550 ;;      Params:         0       4       0
+   551 ;;      Locals:         0       0       0
+   552 ;;      Temps:          0       0       0
+   553 ;;      Totals:         0       4       0
+   554 ;;Total ram usage:        4 bytes
+   555 ;; Hardware stack levels used: 1
+   556 ;; Hardware stack levels required when called: 2
+   557 ;; This function calls:
+   558 ;;		_SPI_send
+   559 ;; This function is called by:
+   560 ;;		_display_num
+   561 ;; This function uses a non-reentrant model
+   562 ;;
+   563                           
+   564     01B1                     _display_digit:	
+   565                           ;psect for function _display_digit
+   566                           
+   567                           
+   568                           ;DigitalRotaryEncoder.c: 115: SPI_send(digit_X, val);
+   569                           
+   570                           ;incstack = 0
+   571                           ; Regs used in _display_digit: [wreg+status,2+status,0+btemp+1+pclath+cstack]
+   572     01B1  0822               	movf	display_digit@val,w
+   573     01B2  00F2               	movwf	SPI_send@data
+   574     01B3  0820               	movf	display_digit@digit_X,w
+   575     01B4  2103               	fcall	_SPI_send
+   576     01B5  0008               	return
+   577     01B6                     __end_of_display_digit:
+   578                           
+   579                           	psect	text3
+   580     006D                     __ptext3:	
+   581 ;; *************** function ___llmod *****************
+   582 ;; Defined at:
+   583 ;;		line 5 in file "C:\Program Files\Microchip\xc8\v2.41\pic\sources\c90\common\llmod.c"
+   584 ;; Parameters:    Size  Location     Type
+   585 ;;  divisor         4    2[COMMON] unsigned long 
+   586 ;;  dividend        4    6[COMMON] unsigned long 
+   587 ;; Auto vars:     Size  Location     Type
+   588 ;;  counter         1   11[COMMON] unsigned char 
+   589 ;; Return value:  Size  Location     Type
+   590 ;;                  4    2[COMMON] unsigned long 
+   591 ;; Registers used:
+   592 ;;		wreg, status,2, status,0, btemp+1
+   593 ;; Tracked objects:
+   594 ;;		On entry : 100/0
+   595 ;;		On exit  : 100/0
+   596 ;;		Unchanged: 100/0
+   597 ;; Data sizes:     COMMON   BANK0   BANK1
+   598 ;;      Params:         8       0       0
+   599 ;;      Locals:         1       0       0
+   600 ;;      Temps:          1       0       0
+   601 ;;      Totals:        10       0       0
+   602 ;;Total ram usage:       10 bytes
+   603 ;; Hardware stack levels used: 1
+   604 ;; Hardware stack levels required when called: 1
+   605 ;; This function calls:
+   606 ;;		Nothing
+   607 ;; This function is called by:
+   608 ;;		_display_num
+   609 ;; This function uses a non-reentrant model
+   610 ;;
+   611                           
+   612     006D                     ___llmod:	
+   613                           ;psect for function ___llmod
+   614                           
+   615                           
+   616                           ;incstack = 0
+   617                           ; Regs used in ___llmod: [wreg+status,2+status,0+btemp+1]
+   618     006D  0875               	movf	___llmod@divisor+3,w
+   619     006E  0474               	iorwf	___llmod@divisor+2,w
+   620     006F  0473               	iorwf	___llmod@divisor+1,w
+   621     0070  0472               	iorwf	___llmod@divisor,w
+   622     0071  1903               	skipnz
+   623     0072  28B0               	goto	l694
+   624     0073  01FB               	clrf	___llmod@counter
+   625     0074  0AFB               	incf	___llmod@counter,f
+   626     0075                     l684:
+   627     0075  1BF5               	btfsc	___llmod@divisor+3,7
+   628     0076  2885               	goto	l686
+   629     0077  3001               	movlw	1
+   630     0078  00FA               	movwf	??___llmod
+   631     0079                     u375:
+   632     0079  1003               	clrc
+   633     007A  0DF2               	rlf	___llmod@divisor,f
+   634     007B  0DF3               	rlf	___llmod@divisor+1,f
+   635     007C  0DF4               	rlf	___llmod@divisor+2,f
+   636     007D  0DF5               	rlf	___llmod@divisor+3,f
+   637     007E  0BFA               	decfsz	??___llmod,f
+   638     007F  2879               	goto	u375
+   639     0080  3001               	movlw	1
+   640     0081  00FF               	movwf	127
+   641     0082  087F               	movf	127,w
+   642     0083  07FB               	addwf	___llmod@counter,f
+   643     0084  2875               	goto	l684
+   644     0085                     l686:
+   645     0085  0875               	movf	___llmod@divisor+3,w
+   646     0086  0279               	subwf	___llmod@dividend+3,w
+   647     0087  1D03               	skipz
+   648     0088  2893               	goto	u395
+   649     0089  0874               	movf	___llmod@divisor+2,w
+   650     008A  0278               	subwf	___llmod@dividend+2,w
+   651     008B  1D03               	skipz
+   652     008C  2893               	goto	u395
+   653     008D  0873               	movf	___llmod@divisor+1,w
+   654     008E  0277               	subwf	___llmod@dividend+1,w
+   655     008F  1D03               	skipz
+   656     0090  2893               	goto	u395
+   657     0091  0872               	movf	___llmod@divisor,w
+   658     0092  0276               	subwf	___llmod@dividend,w
+   659     0093                     u395:
+   660     0093  1C03               	skipc
+   661     0094  28A3               	goto	l690
+   662     0095  0872               	movf	___llmod@divisor,w
+   663     0096  02F6               	subwf	___llmod@dividend,f
+   664     0097  0873               	movf	___llmod@divisor+1,w
+   665     0098  1C03               	skipc
+   666     0099  0F73               	incfsz	___llmod@divisor+1,w
+   667     009A  02F7               	subwf	___llmod@dividend+1,f
+   668     009B  0874               	movf	___llmod@divisor+2,w
+   669     009C  1C03               	skipc
+   670     009D  0F74               	incfsz	___llmod@divisor+2,w
+   671     009E  02F8               	subwf	___llmod@dividend+2,f
+   672     009F  0875               	movf	___llmod@divisor+3,w
+   673     00A0  1C03               	skipc
+   674     00A1  0F75               	incfsz	___llmod@divisor+3,w
+   675     00A2  02F9               	subwf	___llmod@dividend+3,f
+   676     00A3                     l690:
+   677     00A3  3001               	movlw	1
+   678     00A4                     u405:
+   679     00A4  1003               	clrc
+   680     00A5  0CF5               	rrf	___llmod@divisor+3,f
+   681     00A6  0CF4               	rrf	___llmod@divisor+2,f
+   682     00A7  0CF3               	rrf	___llmod@divisor+1,f
+   683     00A8  0CF2               	rrf	___llmod@divisor,f
+   684     00A9  3EFF               	addlw	-1
+   685     00AA  1D03               	skipz
+   686     00AB  28A4               	goto	u405
+   687     00AC  3001               	movlw	1
+   688     00AD  02FB               	subwf	___llmod@counter,f
+   689     00AE  1D03               	btfss	3,2
+   690     00AF  2885               	goto	l686
+   691     00B0                     l694:
+   692     00B0  0879               	movf	___llmod@dividend+3,w
+   693     00B1  00F5               	movwf	?___llmod+3
+   694     00B2  0878               	movf	___llmod@dividend+2,w
+   695     00B3  00F4               	movwf	?___llmod+2
+   696     00B4  0877               	movf	___llmod@dividend+1,w
+   697     00B5  00F3               	movwf	?___llmod+1
+   698     00B6  0876               	movf	___llmod@dividend,w
+   699     00B7  00F2               	movwf	?___llmod
+   700     00B8  0008               	return
+   701     00B9                     __end_of___llmod:
+   702                           
+   703                           	psect	text4
+   704     000F                     __ptext4:	
+   705 ;; *************** function ___lldiv *****************
+   706 ;; Defined at:
+   707 ;;		line 5 in file "C:\Program Files\Microchip\xc8\v2.41\pic\sources\c90\common\__lldiv.c"
+   708 ;; Parameters:    Size  Location     Type
+   709 ;;  divisor         4    2[COMMON] unsigned long 
+   710 ;;  dividend        4    6[COMMON] unsigned long 
+   711 ;; Auto vars:     Size  Location     Type
+   712 ;;  quotient        4    0[BANK0 ] unsigned long 
+   713 ;;  counter         1    4[BANK0 ] unsigned char 
+   714 ;; Return value:  Size  Location     Type
+   715 ;;                  4    2[COMMON] unsigned long 
+   716 ;; Registers used:
+   717 ;;		wreg, status,2, status,0, btemp+1
+   718 ;; Tracked objects:
+   719 ;;		On entry : 100/0
+   720 ;;		On exit  : 100/0
+   721 ;;		Unchanged: 0/0
+   722 ;; Data sizes:     COMMON   BANK0   BANK1
+   723 ;;      Params:         8       0       0
+   724 ;;      Locals:         0       5       0
+   725 ;;      Temps:          1       0       0
+   726 ;;      Totals:         9       5       0
+   727 ;;Total ram usage:       14 bytes
+   728 ;; Hardware stack levels used: 1
+   729 ;; Hardware stack levels required when called: 1
+   730 ;; This function calls:
+   731 ;;		Nothing
+   732 ;; This function is called by:
+   733 ;;		_display_num
+   734 ;; This function uses a non-reentrant model
+   735 ;;
+   736                           
+   737     000F                     ___lldiv:	
+   738                           ;psect for function ___lldiv
+   739                           
+   740                           
+   741                           ;incstack = 0
+   742                           ; Regs used in ___lldiv: [wreg+status,2+status,0+btemp+1]
+   743     000F  3000               	movlw	0
+   744     0010  00A3               	movwf	___lldiv@quotient+3
+   745     0011  3000               	movlw	0
+   746     0012  00A2               	movwf	___lldiv@quotient+2
+   747     0013  3000               	movlw	0
+   748     0014  00A1               	movwf	___lldiv@quotient+1
+   749     0015  3000               	movlw	0
+   750     0016  00A0               	movwf	___lldiv@quotient
+   751     0017  0875               	movf	___lldiv@divisor+3,w
+   752     0018  0474               	iorwf	___lldiv@divisor+2,w
+   753     0019  0473               	iorwf	___lldiv@divisor+1,w
+   754     001A  0472               	iorwf	___lldiv@divisor,w
+   755     001B  1903               	skipnz
+   756     001C  2864               	goto	l672
+   757     001D  01A4               	clrf	___lldiv@counter
+   758     001E  0AA4               	incf	___lldiv@counter,f
+   759     001F                     l658:
+   760     001F  1BF5               	btfsc	___lldiv@divisor+3,7
+   761     0020  282F               	goto	l660
+   762     0021  3001               	movlw	1
+   763     0022  00FA               	movwf	??___lldiv
+   764     0023                     u305:
+   765     0023  1003               	clrc
+   766     0024  0DF2               	rlf	___lldiv@divisor,f
+   767     0025  0DF3               	rlf	___lldiv@divisor+1,f
+   768     0026  0DF4               	rlf	___lldiv@divisor+2,f
+   769     0027  0DF5               	rlf	___lldiv@divisor+3,f
+   770     0028  0BFA               	decfsz	??___lldiv,f
+   771     0029  2823               	goto	u305
+   772     002A  3001               	movlw	1
+   773     002B  00FF               	movwf	127
+   774     002C  087F               	movf	127,w
+   775     002D  07A4               	addwf	___lldiv@counter,f
+   776     002E  281F               	goto	l658
+   777     002F                     l660:
+   778     002F  3001               	movlw	1
+   779     0030  00FA               	movwf	??___lldiv
+   780     0031                     u325:
+   781     0031  1003               	clrc
+   782     0032  0DA0               	rlf	___lldiv@quotient,f
+   783     0033  0DA1               	rlf	___lldiv@quotient+1,f
+   784     0034  0DA2               	rlf	___lldiv@quotient+2,f
+   785     0035  0DA3               	rlf	___lldiv@quotient+3,f
+   786     0036  0BFA               	decfsz	??___lldiv,f
+   787     0037  2831               	goto	u325
+   788     0038  0875               	movf	___lldiv@divisor+3,w
+   789     0039  0279               	subwf	___lldiv@dividend+3,w
+   790     003A  1D03               	skipz
+   791     003B  2846               	goto	u335
+   792     003C  0874               	movf	___lldiv@divisor+2,w
+   793     003D  0278               	subwf	___lldiv@dividend+2,w
+   794     003E  1D03               	skipz
+   795     003F  2846               	goto	u335
+   796     0040  0873               	movf	___lldiv@divisor+1,w
+   797     0041  0277               	subwf	___lldiv@dividend+1,w
+   798     0042  1D03               	skipz
+   799     0043  2846               	goto	u335
+   800     0044  0872               	movf	___lldiv@divisor,w
+   801     0045  0276               	subwf	___lldiv@dividend,w
+   802     0046                     u335:
+   803     0046  1C03               	skipc
+   804     0047  2857               	goto	l668
+   805     0048  0872               	movf	___lldiv@divisor,w
+   806     0049  02F6               	subwf	___lldiv@dividend,f
+   807     004A  0873               	movf	___lldiv@divisor+1,w
+   808     004B  1C03               	skipc
+   809     004C  0F73               	incfsz	___lldiv@divisor+1,w
+   810     004D  02F7               	subwf	___lldiv@dividend+1,f
+   811     004E  0874               	movf	___lldiv@divisor+2,w
+   812     004F  1C03               	skipc
+   813     0050  0F74               	incfsz	___lldiv@divisor+2,w
+   814     0051  02F8               	subwf	___lldiv@dividend+2,f
+   815     0052  0875               	movf	___lldiv@divisor+3,w
+   816     0053  1C03               	skipc
+   817     0054  0F75               	incfsz	___lldiv@divisor+3,w
+   818     0055  02F9               	subwf	___lldiv@dividend+3,f
+   819     0056  1420               	bsf	___lldiv@quotient,0
+   820     0057                     l668:
+   821     0057  3001               	movlw	1
+   822     0058                     u345:
+   823     0058  1003               	clrc
+   824     0059  0CF5               	rrf	___lldiv@divisor+3,f
+   825     005A  0CF4               	rrf	___lldiv@divisor+2,f
+   826     005B  0CF3               	rrf	___lldiv@divisor+1,f
+   827     005C  0CF2               	rrf	___lldiv@divisor,f
+   828     005D  3EFF               	addlw	-1
+   829     005E  1D03               	skipz
+   830     005F  2858               	goto	u345
+   831     0060  3001               	movlw	1
+   832     0061  02A4               	subwf	___lldiv@counter,f
+   833     0062  1D03               	btfss	3,2
+   834     0063  282F               	goto	l660
+   835     0064                     l672:
+   836     0064  0823               	movf	___lldiv@quotient+3,w
+   837     0065  00F5               	movwf	?___lldiv+3
+   838     0066  0822               	movf	___lldiv@quotient+2,w
+   839     0067  00F4               	movwf	?___lldiv+2
+   840     0068  0821               	movf	___lldiv@quotient+1,w
+   841     0069  00F3               	movwf	?___lldiv+1
+   842     006A  0820               	movf	___lldiv@quotient,w
+   843     006B  00F2               	movwf	?___lldiv
+   844     006C  0008               	return
+   845     006D                     __end_of___lldiv:
+   846                           
+   847                           	psect	text5
+   848     0190                     __ptext5:	
+   849 ;; *************** function _MAX7219_Setup *****************
+   850 ;; Defined at:
+   851 ;;		line 106 in file "DigitalRotaryEncoder.c"
+   852 ;; Parameters:    Size  Location     Type
+   853 ;;		None
+   854 ;; Auto vars:     Size  Location     Type
+   855 ;;		None
+   856 ;; Return value:  Size  Location     Type
+   857 ;;                  1    wreg      void 
+   858 ;; Registers used:
+   859 ;;		wreg, status,2, status,0, btemp+1, pclath, cstack
+   860 ;; Tracked objects:
+   861 ;;		On entry : B00/0
+   862 ;;		On exit  : 100/0
+   863 ;;		Unchanged: 0/0
+   864 ;; Data sizes:     COMMON   BANK0   BANK1
+   865 ;;      Params:         0       0       0
+   866 ;;      Locals:         0       0       0
+   867 ;;      Temps:          0       0       0
+   868 ;;      Totals:         0       0       0
+   869 ;;Total ram usage:        0 bytes
+   870 ;; Hardware stack levels used: 1
+   871 ;; Hardware stack levels required when called: 2
+   872 ;; This function calls:
+   873 ;;		_SPI_send
+   874 ;; This function is called by:
+   875 ;;		_main
+   876 ;; This function uses a non-reentrant model
+   877 ;;
+   878                           
+   879     0190                     _MAX7219_Setup:	
+   880                           ;psect for function _MAX7219_Setup
    881                           
-   882                           ;DigitalRotaryEncoder.c: 110: SPI_send(0x0B,0x07);
-   883     017B  3007               	movlw	7
-   884     017C  00F2               	movwf	SPI_send@data
-   885     017D  300B               	movlw	11
-   886     017E  20B3               	fcall	_SPI_send
-   887                           
-   888                           ;DigitalRotaryEncoder.c: 111: SPI_send(0x0C,0x01);
-   889     017F  01F2               	clrf	SPI_send@data
-   890     0180  0AF2               	incf	SPI_send@data,f
-   891     0181  300C               	movlw	12
-   892     0182  20B3               	fcall	_SPI_send
-   893     0183  0008               	return
-   894     0184                     __end_of_MAX7219_Setup:
-   895                           
-   896                           	psect	text6
-   897     00B3                     __ptext6:	
-   898 ;; *************** function _SPI_send *****************
-   899 ;; Defined at:
-   900 ;;		line 87 in file "DigitalRotaryEncoder.c"
-   901 ;; Parameters:    Size  Location     Type
-   902 ;;  addr            1    wreg     unsigned char 
-   903 ;;  data            1    2[COMMON] unsigned char 
-   904 ;; Auto vars:     Size  Location     Type
-   905 ;;  addr            1    4[COMMON] unsigned char 
-   906 ;;  i               2    5[COMMON] int 
-   907 ;; Return value:  Size  Location     Type
-   908 ;;                  1    wreg      void 
-   909 ;; Registers used:
-   910 ;;		wreg, status,2, status,0, btemp+1
-   911 ;; Tracked objects:
-   912 ;;		On entry : 100/0
-   913 ;;		On exit  : 100/0
-   914 ;;		Unchanged: 0/0
-   915 ;; Data sizes:     COMMON   BANK0   BANK1
-   916 ;;      Params:         1       0       0
-   917 ;;      Locals:         3       0       0
-   918 ;;      Temps:          1       0       0
-   919 ;;      Totals:         5       0       0
-   920 ;;Total ram usage:        5 bytes
-   921 ;; Hardware stack levels used: 1
-   922 ;; Hardware stack levels required when called: 1
-   923 ;; This function calls:
-   924 ;;		Nothing
-   925 ;; This function is called by:
-   926 ;;		_MAX7219_Setup
-   927 ;;		_display_digit
-   928 ;; This function uses a non-reentrant model
-   929 ;;
-   930                           
-   931     00B3                     _SPI_send:	
-   932                           ;psect for function _SPI_send
-   933                           
-   934                           
-   935                           ;incstack = 0
-   936                           ; Regs used in _SPI_send: [wreg+status,2+status,0+btemp+1]
-   937                           ;SPI_send@addr stored from wreg
-   938     00B3  00F4               	movwf	SPI_send@addr
-   939                           
-   940                           ;DigitalRotaryEncoder.c: 88: int i;;DigitalRotaryEncoder.c: 89: PORTCbits.RC1 = 0;
-   941     00B4  1087               	bcf	7,1	;volatile
-   942                           
-   943                           ;DigitalRotaryEncoder.c: 90: for (i=0; i<8; i++){
-   944     00B5  01F5               	clrf	SPI_send@i
-   945     00B6  01F6               	clrf	SPI_send@i+1
-   946     00B7                     l36:
-   947                           
-   948                           ;DigitalRotaryEncoder.c: 91: PORTCbits.RC0 = 0;
-   949     00B7  1283               	bcf	3,5	;RP0=0, select bank0
-   950     00B8  1007               	bcf	7,0	;volatile
+   882                           
+   883                           ;DigitalRotaryEncoder.c: 107: SPI_send(0x0F,0x00);
+   884                           
+   885                           ;incstack = 0
+   886                           ; Regs used in _MAX7219_Setup: [wreg+status,2+status,0+btemp+1+pclath+cstack]
+   887     0190  01F2               	clrf	SPI_send@data
+   888     0191  300F               	movlw	15
+   889     0192  2103               	fcall	_SPI_send
+   890                           
+   891                           ;DigitalRotaryEncoder.c: 108: SPI_send(0x09,0xFF);
+   892     0193  30FF               	movlw	255
+   893     0194  00F2               	movwf	SPI_send@data
+   894     0195  3009               	movlw	9
+   895     0196  2103               	fcall	_SPI_send
+   896                           
+   897                           ;DigitalRotaryEncoder.c: 109: SPI_send(0x0A,0x08);
+   898     0197  3008               	movlw	8
+   899     0198  00F2               	movwf	SPI_send@data
+   900     0199  300A               	movlw	10
+   901     019A  2103               	fcall	_SPI_send
+   902                           
+   903                           ;DigitalRotaryEncoder.c: 110: SPI_send(0x0B,0x07);
+   904     019B  3007               	movlw	7
+   905     019C  00F2               	movwf	SPI_send@data
+   906     019D  300B               	movlw	11
+   907     019E  2103               	fcall	_SPI_send
+   908                           
+   909                           ;DigitalRotaryEncoder.c: 111: SPI_send(0x0C,0x01);
+   910     019F  01F2               	clrf	SPI_send@data
+   911     01A0  0AF2               	incf	SPI_send@data,f
+   912     01A1  300C               	movlw	12
+   913     01A2  2103               	fcall	_SPI_send
+   914     01A3  0008               	return
+   915     01A4                     __end_of_MAX7219_Setup:
+   916                           
+   917                           	psect	text6
+   918     0103                     __ptext6:	
+   919 ;; *************** function _SPI_send *****************
+   920 ;; Defined at:
+   921 ;;		line 87 in file "DigitalRotaryEncoder.c"
+   922 ;; Parameters:    Size  Location     Type
+   923 ;;  addr            1    wreg     unsigned char 
+   924 ;;  data            1    2[COMMON] unsigned char 
+   925 ;; Auto vars:     Size  Location     Type
+   926 ;;  addr            1    4[COMMON] unsigned char 
+   927 ;;  i               2    5[COMMON] int 
+   928 ;; Return value:  Size  Location     Type
+   929 ;;                  1    wreg      void 
+   930 ;; Registers used:
+   931 ;;		wreg, status,2, status,0, btemp+1
+   932 ;; Tracked objects:
+   933 ;;		On entry : 100/0
+   934 ;;		On exit  : 100/0
+   935 ;;		Unchanged: 0/0
+   936 ;; Data sizes:     COMMON   BANK0   BANK1
+   937 ;;      Params:         1       0       0
+   938 ;;      Locals:         3       0       0
+   939 ;;      Temps:          1       0       0
+   940 ;;      Totals:         5       0       0
+   941 ;;Total ram usage:        5 bytes
+   942 ;; Hardware stack levels used: 1
+   943 ;; Hardware stack levels required when called: 1
+   944 ;; This function calls:
+   945 ;;		Nothing
+   946 ;; This function is called by:
+   947 ;;		_MAX7219_Setup
+   948 ;;		_display_digit
+   949 ;; This function uses a non-reentrant model
+   950 ;;
    951                           
-   952                           ;DigitalRotaryEncoder.c: 92: PORTCbits.RC2 = (addr & 0b10000000) ? 1:0 ;
-   953     00B9  1FF4               	btfss	SPI_send@addr,7
-   954     00BA  28BE               	goto	u290
-   955     00BB  1283               	bcf	3,5	;RP0=0, select bank0
-   956     00BC  1507               	bsf	7,2	;volatile
-   957     00BD  28C0               	goto	u304
-   958     00BE                     u290:
-   959     00BE  1283               	bcf	3,5	;RP0=0, select bank0
-   960     00BF  1107               	bcf	7,2	;volatile
-   961     00C0                     u304:
-   962                           
-   963                           ;DigitalRotaryEncoder.c: 93: PORTCbits.RC0 = 1;
-   964     00C0  1407               	bsf	7,0	;volatile
-   965                           
-   966                           ;DigitalRotaryEncoder.c: 94: addr = addr << 1;
-   967     00C1  0874               	movf	SPI_send@addr,w
-   968     00C2  00F3               	movwf	??_SPI_send
-   969     00C3  0773               	addwf	??_SPI_send,w
-   970     00C4  00F4               	movwf	SPI_send@addr
-   971     00C5  3001               	movlw	1
-   972     00C6  07F5               	addwf	SPI_send@i,f
-   973     00C7  1803               	skipnc
-   974     00C8  0AF6               	incf	SPI_send@i+1,f
-   975     00C9  3000               	movlw	0
-   976     00CA  07F6               	addwf	SPI_send@i+1,f
-   977     00CB  0876               	movf	SPI_send@i+1,w
-   978     00CC  3A80               	xorlw	128
-   979     00CD  00FF               	movwf	127
-   980     00CE  3080               	movlw	128
-   981     00CF  027F               	subwf	127,w
-   982     00D0  1D03               	skipz
-   983     00D1  28D4               	goto	u315
-   984     00D2  3008               	movlw	8
-   985     00D3  0275               	subwf	SPI_send@i,w
-   986     00D4                     u315:
-   987     00D4  1C03               	skipc
-   988     00D5  28B7               	goto	l36
-   989                           
-   990                           ;DigitalRotaryEncoder.c: 95: };DigitalRotaryEncoder.c: 96: for (i=0; i<8; i++){
-   991     00D6  01F5               	clrf	SPI_send@i
-   992     00D7  01F6               	clrf	SPI_send@i+1
-   993     00D8                     l38:
-   994                           
-   995                           ;DigitalRotaryEncoder.c: 97: PORTCbits.RC0 = 0;
-   996     00D8  1283               	bcf	3,5	;RP0=0, select bank0
-   997     00D9  1007               	bcf	7,0	;volatile
-   998                           
-   999                           ;DigitalRotaryEncoder.c: 98: PORTCbits.RC2 = (data & 0b10000000) ? 1:0 ;
-  1000     00DA  1FF2               	btfss	SPI_send@data,7
-  1001     00DB  28DF               	goto	u320
-  1002     00DC  1283               	bcf	3,5	;RP0=0, select bank0
-  1003     00DD  1507               	bsf	7,2	;volatile
-  1004     00DE  28E1               	goto	u334
-  1005     00DF                     u320:
-  1006     00DF  1283               	bcf	3,5	;RP0=0, select bank0
-  1007     00E0  1107               	bcf	7,2	;volatile
-  1008     00E1                     u334:
-  1009                           
-  1010                           ;DigitalRotaryEncoder.c: 99: PORTCbits.RC0 = 1;
-  1011     00E1  1407               	bsf	7,0	;volatile
-  1012                           
-  1013                           ;DigitalRotaryEncoder.c: 100: data = data << 1;
-  1014     00E2  0872               	movf	SPI_send@data,w
-  1015     00E3  00F3               	movwf	??_SPI_send
-  1016     00E4  0773               	addwf	??_SPI_send,w
-  1017     00E5  00F2               	movwf	SPI_send@data
-  1018     00E6  3001               	movlw	1
-  1019     00E7  07F5               	addwf	SPI_send@i,f
-  1020     00E8  1803               	skipnc
-  1021     00E9  0AF6               	incf	SPI_send@i+1,f
-  1022     00EA  3000               	movlw	0
-  1023     00EB  07F6               	addwf	SPI_send@i+1,f
-  1024     00EC  0876               	movf	SPI_send@i+1,w
-  1025     00ED  3A80               	xorlw	128
-  1026     00EE  00FF               	movwf	127
-  1027     00EF  3080               	movlw	128
-  1028     00F0  027F               	subwf	127,w
-  1029     00F1  1D03               	skipz
-  1030     00F2  28F5               	goto	u345
-  1031     00F3  3008               	movlw	8
-  1032     00F4  0275               	subwf	SPI_send@i,w
-  1033     00F5                     u345:
-  1034     00F5  1C03               	skipc
-  1035     00F6  28D8               	goto	l38
-  1036                           
-  1037                           ;DigitalRotaryEncoder.c: 101: };DigitalRotaryEncoder.c: 102: PORTCbits.RC0 = 0;
-  1038     00F7  1283               	bcf	3,5	;RP0=0, select bank0
-  1039     00F8  1007               	bcf	7,0	;volatile
-  1040                           
-  1041                           ;DigitalRotaryEncoder.c: 103: PORTCbits.RC1 = 1;
-  1042     00F9  1487               	bsf	7,1	;volatile
-  1043     00FA  0008               	return
-  1044     00FB                     __end_of_SPI_send:
-  1045                           
-  1046                           	psect	text7
-  1047     0184                     __ptext7:	
-  1048 ;; *************** function _ISR_function *****************
-  1049 ;; Defined at:
-  1050 ;;		line 47 in file "DigitalRotaryEncoder.c"
-  1051 ;; Parameters:    Size  Location     Type
-  1052 ;;		None
-  1053 ;; Auto vars:     Size  Location     Type
-  1054 ;;		None
-  1055 ;; Return value:  Size  Location     Type
-  1056 ;;                  1    wreg      void 
-  1057 ;; Registers used:
-  1058 ;;		None
-  1059 ;; Tracked objects:
-  1060 ;;		On entry : 0/0
-  1061 ;;		On exit  : 0/0
-  1062 ;;		Unchanged: 0/0
-  1063 ;; Data sizes:     COMMON   BANK0   BANK1
-  1064 ;;      Params:         0       0       0
-  1065 ;;      Locals:         0       0       0
-  1066 ;;      Temps:          2       0       0
-  1067 ;;      Totals:         2       0       0
-  1068 ;;Total ram usage:        2 bytes
-  1069 ;; Hardware stack levels used: 1
-  1070 ;; This function calls:
-  1071 ;;		Nothing
-  1072 ;; This function is called by:
-  1073 ;;		Interrupt level 1
-  1074 ;; This function uses a non-reentrant model
-  1075 ;;
-  1076                           
-  1077     0184                     _ISR_function:	
-  1078                           ;psect for function _ISR_function
-  1079                           
-  1080                           
-  1081                           ;DigitalRotaryEncoder.c: 50: if (INTCONbits.RAIF){
-  1082     0184  1C0B               	btfss	11,0	;volatile
-  1083     0185  298A               	goto	i1l24
-  1084                           
-  1085                           ;DigitalRotaryEncoder.c: 51: int_F = 1;
-  1086     0186  1283               	bcf	3,5	;RP0=0, select bank0
-  1087     0187  01AF               	clrf	_int_F
-  1088     0188  0AAF               	incf	_int_F,f
-  1089                           
-  1090                           ;DigitalRotaryEncoder.c: 52: INTCONbits.RAIF = 0;
-  1091     0189  100B               	bcf	11,0	;volatile
-  1092     018A                     i1l24:
-  1093     018A  0871               	movf	??_ISR_function+1,w
-  1094     018B  008A               	movwf	10
-  1095     018C  0E70               	swapf	??_ISR_function,w
-  1096     018D  0083               	movwf	3
-  1097     018E  0EFE               	swapf	126,f
-  1098     018F  0E7E               	swapf	126,w
-  1099     0190  0009               	retfie
-  1100     0191                     __end_of_ISR_function:
-  1101     007E                     btemp	set	126	;btemp
-  1102     007E                     wtemp0	set	126
-  1103                           
-  1104                           	psect	intentry
-  1105     0004                     __pintentry:	
-  1106                           ;incstack = 0
-  1107                           ; Regs used in _ISR_function: []
-  1108                           
-  1109     0004                     interrupt_function:
-  1110     007E                     saved_w	set	btemp
-  1111     0004  00FE               	movwf	btemp
-  1112     0005  0E03               	swapf	3,w
-  1113     0006  00F0               	movwf	??_ISR_function
-  1114     0007  080A               	movf	10,w
-  1115     0008  00F1               	movwf	??_ISR_function+1
-  1116     0009  2984               	ljmp	_ISR_function
-  1117                           
-  1118                           	psect	config
-  1119                           
-  1120                           ;Config register CONFIG @ 0x2007
-  1121                           ;	Oscillator Selection bits
-  1122                           ;	FOSC = INTOSCIO, INTOSCIO oscillator: I/O function on RA4/OSC2/CLKOUT pin, I/O functio
+   952     0103                     _SPI_send:	
+   953                           ;psect for function _SPI_send
+   954                           
+   955                           
+   956                           ;incstack = 0
+   957                           ; Regs used in _SPI_send: [wreg+status,2+status,0+btemp+1]
+   958                           ;SPI_send@addr stored from wreg
+   959     0103  00F4               	movwf	SPI_send@addr
+   960                           
+   961                           ;DigitalRotaryEncoder.c: 88: int i;;DigitalRotaryEncoder.c: 89: PORTCbits.RC1 = 0;
+   962     0104  1087               	bcf	7,1	;volatile
+   963                           
+   964                           ;DigitalRotaryEncoder.c: 90: for (i=0; i<8; i++){
+   965     0105  01F5               	clrf	SPI_send@i
+   966     0106  01F6               	clrf	SPI_send@i+1
+   967     0107                     l36:
+   968                           
+   969                           ;DigitalRotaryEncoder.c: 91: PORTCbits.RC0 = 0;
+   970     0107  1283               	bcf	3,5	;RP0=0, select bank0
+   971     0108  1007               	bcf	7,0	;volatile
+   972                           
+   973                           ;DigitalRotaryEncoder.c: 92: PORTCbits.RC2 = (addr & 0b10000000) ? 1:0 ;
+   974     0109  1FF4               	btfss	SPI_send@addr,7
+   975     010A  290E               	goto	u230
+   976     010B  1283               	bcf	3,5	;RP0=0, select bank0
+   977     010C  1507               	bsf	7,2	;volatile
+   978     010D  2910               	goto	u244
+   979     010E                     u230:
+   980     010E  1283               	bcf	3,5	;RP0=0, select bank0
+   981     010F  1107               	bcf	7,2	;volatile
+   982     0110                     u244:
+   983                           
+   984                           ;DigitalRotaryEncoder.c: 93: PORTCbits.RC0 = 1;
+   985     0110  1407               	bsf	7,0	;volatile
+   986                           
+   987                           ;DigitalRotaryEncoder.c: 94: addr = addr << 1;
+   988     0111  0874               	movf	SPI_send@addr,w
+   989     0112  00F3               	movwf	??_SPI_send
+   990     0113  0773               	addwf	??_SPI_send,w
+   991     0114  00F4               	movwf	SPI_send@addr
+   992     0115  3001               	movlw	1
+   993     0116  07F5               	addwf	SPI_send@i,f
+   994     0117  1803               	skipnc
+   995     0118  0AF6               	incf	SPI_send@i+1,f
+   996     0119  3000               	movlw	0
+   997     011A  07F6               	addwf	SPI_send@i+1,f
+   998     011B  0876               	movf	SPI_send@i+1,w
+   999     011C  3A80               	xorlw	128
+  1000     011D  00FF               	movwf	127
+  1001     011E  3080               	movlw	128
+  1002     011F  027F               	subwf	127,w
+  1003     0120  1D03               	skipz
+  1004     0121  2924               	goto	u255
+  1005     0122  3008               	movlw	8
+  1006     0123  0275               	subwf	SPI_send@i,w
+  1007     0124                     u255:
+  1008     0124  1C03               	skipc
+  1009     0125  2907               	goto	l36
+  1010                           
+  1011                           ;DigitalRotaryEncoder.c: 95: };DigitalRotaryEncoder.c: 96: for (i=0; i<8; i++){
+  1012     0126  01F5               	clrf	SPI_send@i
+  1013     0127  01F6               	clrf	SPI_send@i+1
+  1014     0128                     l38:
+  1015                           
+  1016                           ;DigitalRotaryEncoder.c: 97: PORTCbits.RC0 = 0;
+  1017     0128  1283               	bcf	3,5	;RP0=0, select bank0
+  1018     0129  1007               	bcf	7,0	;volatile
+  1019                           
+  1020                           ;DigitalRotaryEncoder.c: 98: PORTCbits.RC2 = (data & 0b10000000) ? 1:0 ;
+  1021     012A  1FF2               	btfss	SPI_send@data,7
+  1022     012B  292F               	goto	u260
+  1023     012C  1283               	bcf	3,5	;RP0=0, select bank0
+  1024     012D  1507               	bsf	7,2	;volatile
+  1025     012E  2931               	goto	u274
+  1026     012F                     u260:
+  1027     012F  1283               	bcf	3,5	;RP0=0, select bank0
+  1028     0130  1107               	bcf	7,2	;volatile
+  1029     0131                     u274:
+  1030                           
+  1031                           ;DigitalRotaryEncoder.c: 99: PORTCbits.RC0 = 1;
+  1032     0131  1407               	bsf	7,0	;volatile
+  1033                           
+  1034                           ;DigitalRotaryEncoder.c: 100: data = data << 1;
+  1035     0132  0872               	movf	SPI_send@data,w
+  1036     0133  00F3               	movwf	??_SPI_send
+  1037     0134  0773               	addwf	??_SPI_send,w
+  1038     0135  00F2               	movwf	SPI_send@data
+  1039     0136  3001               	movlw	1
+  1040     0137  07F5               	addwf	SPI_send@i,f
+  1041     0138  1803               	skipnc
+  1042     0139  0AF6               	incf	SPI_send@i+1,f
+  1043     013A  3000               	movlw	0
+  1044     013B  07F6               	addwf	SPI_send@i+1,f
+  1045     013C  0876               	movf	SPI_send@i+1,w
+  1046     013D  3A80               	xorlw	128
+  1047     013E  00FF               	movwf	127
+  1048     013F  3080               	movlw	128
+  1049     0140  027F               	subwf	127,w
+  1050     0141  1D03               	skipz
+  1051     0142  2945               	goto	u285
+  1052     0143  3008               	movlw	8
+  1053     0144  0275               	subwf	SPI_send@i,w
+  1054     0145                     u285:
+  1055     0145  1C03               	skipc
+  1056     0146  2928               	goto	l38
+  1057                           
+  1058                           ;DigitalRotaryEncoder.c: 101: };DigitalRotaryEncoder.c: 102: PORTCbits.RC0 = 0;
+  1059     0147  1283               	bcf	3,5	;RP0=0, select bank0
+  1060     0148  1007               	bcf	7,0	;volatile
+  1061                           
+  1062                           ;DigitalRotaryEncoder.c: 103: PORTCbits.RC1 = 1;
+  1063     0149  1487               	bsf	7,1	;volatile
+  1064     014A  0008               	return
+  1065     014B                     __end_of_SPI_send:
+  1066                           
+  1067                           	psect	text7
+  1068     01A4                     __ptext7:	
+  1069 ;; *************** function _ISR_function *****************
+  1070 ;; Defined at:
+  1071 ;;		line 47 in file "DigitalRotaryEncoder.c"
+  1072 ;; Parameters:    Size  Location     Type
+  1073 ;;		None
+  1074 ;; Auto vars:     Size  Location     Type
+  1075 ;;		None
+  1076 ;; Return value:  Size  Location     Type
+  1077 ;;                  1    wreg      void 
+  1078 ;; Registers used:
+  1079 ;;		None
+  1080 ;; Tracked objects:
+  1081 ;;		On entry : 0/0
+  1082 ;;		On exit  : 0/0
+  1083 ;;		Unchanged: 0/0
+  1084 ;; Data sizes:     COMMON   BANK0   BANK1
+  1085 ;;      Params:         0       0       0
+  1086 ;;      Locals:         0       0       0
+  1087 ;;      Temps:          2       0       0
+  1088 ;;      Totals:         2       0       0
+  1089 ;;Total ram usage:        2 bytes
+  1090 ;; Hardware stack levels used: 1
+  1091 ;; This function calls:
+  1092 ;;		Nothing
+  1093 ;; This function is called by:
+  1094 ;;		Interrupt level 1
+  1095 ;; This function uses a non-reentrant model
+  1096 ;;
+  1097                           
+  1098     01A4                     _ISR_function:	
+  1099                           ;psect for function _ISR_function
+  1100                           
+  1101                           
+  1102                           ;DigitalRotaryEncoder.c: 50: if (INTCONbits.RAIF){
+  1103     01A4  1C0B               	btfss	11,0	;volatile
+  1104     01A5  29AA               	goto	i1l24
+  1105                           
+  1106                           ;DigitalRotaryEncoder.c: 51: int_F = 1;
+  1107     01A6  1283               	bcf	3,5	;RP0=0, select bank0
+  1108     01A7  01B6               	clrf	_int_F
+  1109     01A8  0AB6               	incf	_int_F,f
+  1110                           
+  1111                           ;DigitalRotaryEncoder.c: 52: INTCONbits.RAIF = 0;
+  1112     01A9  100B               	bcf	11,0	;volatile
+  1113     01AA                     i1l24:
+  1114     01AA  0871               	movf	??_ISR_function+1,w
+  1115     01AB  008A               	movwf	10
+  1116     01AC  0E70               	swapf	??_ISR_function,w
+  1117     01AD  0083               	movwf	3
+  1118     01AE  0EFE               	swapf	126,f
+  1119     01AF  0E7E               	swapf	126,w
+  1120     01B0  0009               	retfie
+  1121     01B1                     __end_of_ISR_function:
+  1122     007E                     btemp	set	126	;btemp
+  1123     007E                     wtemp0	set	126
+  1124                           
+  1125                           	psect	intentry
+  1126     0004                     __pintentry:	
+  1127                           ;incstack = 0
+  1128                           ; Regs used in _ISR_function: []
+  1129                           
+  1130     0004                     interrupt_function:
+  1131     007E                     saved_w	set	btemp
+  1132     0004  00FE               	movwf	btemp
+  1133     0005  0E03               	swapf	3,w
+  1134     0006  00F0               	movwf	??_ISR_function
+  1135     0007  080A               	movf	10,w
+  1136     0008  00F1               	movwf	??_ISR_function+1
+  1137     0009  29A4               	ljmp	_ISR_function
+  1138                           
+  1139                           	psect	config
+  1140                           
+  1141                           ;Config register CONFIG @ 0x2007
+  1142                           ;	Oscillator Selection bits
+  1143                           ;	FOSC = INTOSCIO, INTOSCIO oscillator: I/O function on RA4/OSC2/CLKOUT pin, I/O functio
       +                          n on RA5/OSC1/CLKIN
-  1123                           ;	Watchdog Timer Enable bit
-  1124                           ;	WDTE = OFF, WDT disabled and can be enabled by SWDTEN bit of the WDTCON register
-  1125                           ;	Power-up Timer Enable bit
-  1126                           ;	PWRTE = OFF, PWRT disabled
-  1127                           ;	MCLR Pin Function Select bit
-  1128                           ;	MCLRE = OFF, MCLR pin function is digital input, MCLR internally tied to VDD
-  1129                           ;	Code Protection bit
-  1130                           ;	CP = OFF, Program memory code protection is disabled
-  1131                           ;	Internal Oscillator Frequency Select bit
-  1132                           ;	IOSCFS = 8MHZ, 8 MHz
-  1133                           ;	Brown-out Reset Selection bits
-  1134                           ;	BOREN = OFF, BOR Disabled
-  1135     2007                     	org	8199
-  1136     2007  3CD4               	dw	15572
+  1144                           ;	Watchdog Timer Enable bit
+  1145                           ;	WDTE = OFF, WDT disabled and can be enabled by SWDTEN bit of the WDTCON register
+  1146                           ;	Power-up Timer Enable bit
+  1147                           ;	PWRTE = OFF, PWRT disabled
+  1148                           ;	MCLR Pin Function Select bit
+  1149                           ;	MCLRE = OFF, MCLR pin function is digital input, MCLR internally tied to VDD
+  1150                           ;	Code Protection bit
+  1151                           ;	CP = OFF, Program memory code protection is disabled
+  1152                           ;	Internal Oscillator Frequency Select bit
+  1153                           ;	IOSCFS = 8MHZ, 8 MHz
+  1154                           ;	Brown-out Reset Selection bits
+  1155                           ;	BOREN = OFF, BOR Disabled
+  1156     2007                     	org	8199
+  1157     2007  3CD4               	dw	15572
 
 Data Sizes:
     Strings     0
@@ -1161,7 +1182,7 @@ Data Sizes:
 Auto Spaces:
     Space          Size  Autos    Used
     COMMON           14     12      12
-    BANK0            80     15      16
+    BANK0            80     22      23
     BANK1            32      0       0
 
 Pointer List with Targets:
@@ -1170,8 +1191,8 @@ Pointer List with Targets:
 
 Critical Paths under _main in COMMON
 
-    _display_num->_display_digit
-    _display_digit->___awmod
+    _display_num->___llmod
+    _display_digit->___llmod
     _MAX7219_Setup->_SPI_send
 
 Critical Paths under _ISR_function in COMMON
@@ -1181,6 +1202,7 @@ Critical Paths under _ISR_function in COMMON
 Critical Paths under _main in BANK0
 
     _main->_display_num
+    _display_num->___lldiv
 
 Critical Paths under _ISR_function in BANK0
 
@@ -1199,27 +1221,28 @@ Call Graph Tables:
  ---------------------------------------------------------------------------------
  (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
  ---------------------------------------------------------------------------------
- (0) _main                                                11     7      4    2024
-                                              4 BANK0     11     7      4
+ (0) _main                                                11     7      4    1749
+                                             11 BANK0     11     7      4
                       _MAX7219_Setup
                         _display_num
  ---------------------------------------------------------------------------------
- (1) _display_num                                          4     2      2    1537
-                                              0 BANK0      4     2      2
-                            ___awdiv
-                            ___awmod
+ (1) _display_num                                          6     2      4    1262
+                                              5 BANK0      6     2      4
+                            ___lldiv
+                            ___llmod
                       _display_digit
  ---------------------------------------------------------------------------------
  (2) _display_digit                                        4     0      4     570
-                                              8 COMMON     4     0      4
+                                              0 BANK0      4     0      4
                            _SPI_send
-                            ___awmod (ARG)
+                            ___llmod (ARG)
  ---------------------------------------------------------------------------------
- (2) ___awmod                                              6     2      4     382
-                                              2 COMMON     6     2      4
+ (2) ___llmod                                             10     2      8     245
+                                              2 COMMON    10     2      8
  ---------------------------------------------------------------------------------
- (2) ___awdiv                                              8     4      4     386
-                                              2 COMMON     8     4      4
+ (2) ___lldiv                                             14     6      8     248
+                                              2 COMMON     9     1      8
+                                              0 BANK0      5     5      0
  ---------------------------------------------------------------------------------
  (1) _MAX7219_Setup                                        0     0      0     440
                            _SPI_send
@@ -1243,11 +1266,11 @@ Call Graph Tables:
    _MAX7219_Setup
      _SPI_send
    _display_num
-     ___awdiv
-     ___awmod
+     ___lldiv
+     ___llmod
      _display_digit
        _SPI_send
-       ___awmod (ARG)
+       ___llmod (ARG)
 
  _ISR_function (ROOT)
 
@@ -1263,52 +1286,50 @@ BITSFR1              0      0       0       2        0.0%
 SFR1                 0      0       0       2        0.0%
 STACK                0      0       0       2        0.0%
 BITBANK0            50      0       0       3        0.0%
-BANK0               50      F      10       4       20.0%
+BANK0               50     16      17       4       28.7%
 BANK1               20      0       0       5        0.0%
-ABS                  0      0      1C       6        0.0%
+ABS                  0      0      23       6        0.0%
 BITBANK1            20      0       0       7        0.0%
-DATA                 0      0      1C       8        0.0%
+DATA                 0      0      23       8        0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.41 build 20230208172133 
-Symbol Table                                                                                   Sat Jul 22 19:00:44 2023
+Symbol Table                                                                                   Tue Jul 25 01:00:45 2023
 
-                     l36 00B7                       l38 00D8             ?_display_num 0020  
-           ___awdiv@sign 0077                      l710 003A                      l720 005B  
-                    l724 0063                      l716 0050                      l708 002C  
-                    l740 0079                      l750 008D                      l736 0072  
-                    l808 0112                      l762 00AE                      l754 009B  
-                    l692 0019                      l748 007F                      l758 00A6  
-                    l774 013E                      l698 0024                      u320 00DF  
-                    u304 00C0                      u315 00D4                      u405 003B  
-                    u334 00E1                      u415 0047                      u345 00F5  
-                    u425 0051                      u505 0093                      u290 00BE  
-                    u515 009C                      u385 002F                      u545 016D  
-                    u485 0082             ___awmod@sign 0077           ?_display_digit 0078  
-            main@counter 002C                     i1l24 018A                     _main 00FB  
-                   btemp 007E                     start 000A                    ?_main 0024  
-        __end_of___awdiv 0068          __end_of___awmod 00B3                    _ANSEL 0091  
-        ___awdiv@divisor 0072          ___awdiv@counter 0076                    _int_F 002F  
-                  pclath 000A         __end_of_SPI_send 00FB             display_num@i 0022  
-                  status 0003                    wtemp0 007E          __initialization 000B  
-           __end_of_main 013A                   ??_main 0028          ??_display_digit 007C  
-       ___awdiv@dividend 0074                ??___awdiv 0076                ??___awmod 0076  
-       ___awdiv@quotient 0078          ___awmod@divisor 0072          ___awmod@counter 0076  
-                 saved_w 007E    __end_of_MAX7219_Setup 0184  __end_of__initialization 000D  
-         __pcstackCOMMON 0070             SPI_send@addr 0074             SPI_send@data 0072  
-              ?_SPI_send 0072               __pbssBANK0 002F               __pmaintext 00FB  
-             __pintentry 0004               ??_SPI_send 0073            ?_ISR_function 0070  
-                ___awdiv 000F                  ___awmod 0068                SPI_send@i 0075  
-   display_digit@digit_X 0078                  __ptext1 013A                  __ptext2 0191  
-                __ptext3 0068                  __ptext4 000F                  __ptext5 0170  
-                __ptext6 00B3                  __ptext7 0184         ___awmod@dividend 0074  
-                main@dir 002E     end_of_initialization 000D           ??_ISR_function 0070  
-         display_num@val 0020                _PORTAbits 0005                _PORTCbits 0007  
-              _TRISCbits 0087    __end_of_display_digit 0196            ??_display_num 007C  
-    start_initialization 000B     __end_of_ISR_function 0191      __end_of_display_num 0170  
-              ___latbits 0000            __pcstackBANK0 0020                 ?___awdiv 0072  
-               ?___awmod 0072            _MAX7219_Setup 0170        interrupt_function 0004  
-               _IOCAbits 0096              _display_num 013A                 _SPI_send 00B3  
-         ?_MAX7219_Setup 0070         display_digit@val 007A             _ISR_function 0184  
-               main@argc 0024                 main@argv 0026               _INTCONbits 000B  
-        ??_MAX7219_Setup 0077                 intlevel1 0000            _display_digit 0191  
+                     l36 0107                       l38 0128             ?_display_num 0025  
+                    l706 00BD                      l660 002F                      l740 0166  
+                    l672 0064                      l658 001F                      l690 00A3  
+                    l668 0057                      l684 0075                      l686 0085  
+                    l694 00B0                      u230 010E                      u305 0023  
+                    u260 012F                      u244 0110                      u325 0031  
+                    u405 00A4                      u255 0124                      u335 0046  
+                    u345 0058                      u425 0100                      u274 0131  
+                    u285 0145                      u375 0079                      u395 0093  
+         ?_display_digit 0020              main@counter 0033                     i1l24 01AA  
+                   _main 014B                     btemp 007E                     start 000A  
+                  ?_main 002B                    _ANSEL 0091          __end_of___lldiv 006D  
+        __end_of___llmod 00B9                    _int_F 0036                    pclath 000A  
+       __end_of_SPI_send 014B             display_num@i 0029                    status 0003  
+                  wtemp0 007E          __initialization 000B             __end_of_main 0190  
+                 ??_main 002F          ??_display_digit 007C         ___llmod@dividend 0076  
+              ??___lldiv 007A                ??___llmod 007A                   saved_w 007E  
+  __end_of_MAX7219_Setup 01A4  __end_of__initialization 000D           __pcstackCOMMON 0070  
+           SPI_send@addr 0074             SPI_send@data 0072                ?_SPI_send 0072  
+             __pbssBANK0 0036               __pmaintext 014B               __pintentry 0004  
+             ??_SPI_send 0073            ?_ISR_function 0070                  ___lldiv 000F  
+                ___llmod 006D                SPI_send@i 0075     display_digit@digit_X 0020  
+                __ptext1 00B9                  __ptext2 01B1                  __ptext3 006D  
+                __ptext4 000F                  __ptext5 0190                  __ptext6 0103  
+                __ptext7 01A4                  main@dir 0035     end_of_initialization 000D  
+         ??_ISR_function 0070          ___lldiv@divisor 0072          ___lldiv@counter 0024  
+         display_num@val 0025                _PORTAbits 0005                _PORTCbits 0007  
+              _TRISCbits 0087    __end_of_display_digit 01B6            ??_display_num 007C  
+    start_initialization 000B          ___llmod@divisor 0072          ___llmod@counter 007B  
+   __end_of_ISR_function 01B1      __end_of_display_num 0103                ___latbits 0000  
+          __pcstackBANK0 0020                 ?___lldiv 0072                 ?___llmod 0072  
+          _MAX7219_Setup 0190        interrupt_function 0004                 _IOCAbits 0096  
+            _display_num 00B9                 _SPI_send 0103           ?_MAX7219_Setup 0070  
+       display_digit@val 0022             _ISR_function 01A4                 main@argc 002B  
+               main@argv 002D               _INTCONbits 000B          ??_MAX7219_Setup 0077  
+               intlevel1 0000         ___lldiv@dividend 0076         ___lldiv@quotient 0020  
+          _display_digit 01B1  

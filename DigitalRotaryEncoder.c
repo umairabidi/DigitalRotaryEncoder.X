@@ -42,7 +42,7 @@ uint8_t int_F = 0;
 void SPI_send(uint8_t addr, uint8_t data);
 void MAX7219_Setup();
 void display_digit(int digit_X, int val);
-void display_num(int val);
+void display_num(uint32_t val);
 
 void __interrupt() ISR_function(void){
     #asm nop
@@ -115,7 +115,7 @@ void display_digit(int digit_X, int val){
     SPI_send(digit_X, val);
 }
 
-void display_num(int val){
+void display_num(uint32_t val){
     int i;
     for (i=1; i<=8; i++){
         display_digit(i, val%10);
